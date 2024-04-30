@@ -73,6 +73,11 @@ namespace SCP294.Config
         [Description("Should players be forced to get a random drink? (Player drinks will still be requestable)")]
         public bool ForceRandom { get; set; } = false;
         /// <summary>
+        ///  Enable using machine with random drink by flipping the coin
+        /// </summary>
+        [Description("Enable using machine with random drink by flipping the coin")]
+        public bool EnableUsageByCoinFlip { get; set; } = false;
+        /// <summary>
         ///  How close to the machine does the player have to be?
         /// </summary>
         [Description("How close to the machine does the player have to be?")]
