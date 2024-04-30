@@ -41,6 +41,8 @@ namespace SCP294.handlers
 
         public void OnCoinFlip(FlippingCoinEventArgs ev)
         {
+            if (!SCP294.Instance.Config.EnableUsageByCoinFlip) return;
+
             System.Random rand = new System.Random();
             // Player MUST Be Human
             Player player = ev.Player;
