@@ -71,13 +71,26 @@ namespace SCP294.Classes
         {
             SCP294.Instance.SpawnedSCP294s = new Dictionary<SchematicObject, bool>();
 
-            // Get Room and Visual - Random spawn
-            foreach (var roomType in SCP294.Instance.Config.SpawningLocations.SpawnRooms.Keys.ToList())
+            if (SCP294.Instance.Config.ForceScp294SpawningLocations)
             {
-                Room SpawnRoom = Room.Get(roomType);
-                SpawnTransform relativeOffsetTransform = SCP294.Instance.Config.SpawningLocations.SpawnRooms[SpawnRoom.Type].RandomItem();
+                foreach (var roomType in SCP294.Instance.Config.SpawningLocations.SpawnRooms.Keys.ToList())
+                {
+                    Room SpawnRoom = Room.Get(roomType);
+                    SpawnTransform relativeOffsetTransform = SCP294.Instance.Config.SpawningLocations.SpawnRooms[SpawnRoom.Type].RandomItem();
 
-                CreateSCP294(SpawnRoom.Position + (SpawnRoom.Rotation * relativeOffsetTransform.Position), Quaternion.Euler(SpawnRoom.Rotation.eulerAngles + Quaternion.Euler(relativeOffsetTransform.Rotation.x, relativeOffsetTransform.Rotation.y, relativeOffsetTransform.Rotation.z).eulerAngles), relativeOffsetTransform.Scale);
+                    CreateSCP294(SpawnRoom.Position + (SpawnRoom.Rotation * relativeOffsetTransform.Position), Quaternion.Euler(SpawnRoom.Rotation.eulerAngles + Quaternion.Euler(relativeOffsetTransform.Rotation.x, relativeOffsetTransform.Rotation.y, relativeOffsetTransform.Rotation.z).eulerAngles), relativeOffsetTransform.Scale);
+                }
+            } else 
+            {
+                // Get Room and Visual
+                for (int i = 0; i < SCP294.Instance.Config.SpawningLocations.SpawnAmount; i++)
+                {
+                    Room SpawnRoom = RoomHandler.GetRandomRoom(SCP294.Instance.Config.SpawningLocations.SpawnRooms.Keys.ToList());
+                    if (!SpawnRoom) continue;
+                    SpawnTransform relativeOffsetTransform = SCP294.Instance.Config.SpawningLocations.SpawnRooms[SpawnRoom.Type].RandomItem();
+
+                    CreateSCP294(SpawnRoom.Position + (SpawnRoom.Rotation * relativeOffsetTransform.Position), Quaternion.Euler(SpawnRoom.Rotation.eulerAngles + Quaternion.Euler(relativeOffsetTransform.Rotation.x, relativeOffsetTransform.Rotation.y, relativeOffsetTransform.Rotation.z).eulerAngles), relativeOffsetTransform.Scale);
+                }
             }
         }
 

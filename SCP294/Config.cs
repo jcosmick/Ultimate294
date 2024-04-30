@@ -78,6 +78,11 @@ namespace SCP294.Config
         [Description("Enable using machine with random drink by flipping the coin")]
         public bool EnableUsageByCoinFlip { get; set; } = false;
         /// <summary>
+        ///  Enable using machine with random drink by flipping the coin
+        /// </summary>
+        [Description("Spawn amount is ignored - Scp294 will be in every Spawning Locations set")]
+        public bool ForceScp294SpawningLocations { get; set; } = false;
+        /// <summary>
         ///  How close to the machine does the player have to be?
         /// </summary>
         [Description("How close to the machine does the player have to be?")]

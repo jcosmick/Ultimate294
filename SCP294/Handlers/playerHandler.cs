@@ -266,7 +266,6 @@ namespace SCP294.handlers
                     }
                 }
             }
-            player.ShowHint("SCP-294 couldn't determine your drink, and refunded you your coin.");
     }
 
         public void UsedItem(UsedItemEventArgs args)
