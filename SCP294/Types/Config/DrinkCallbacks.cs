@@ -17,6 +17,8 @@ using Exiled.CustomItems.API.Features;
 using PlayerRoles.RoleAssign;
 using MapGeneration.Distributors;
 using Exiled.API.Features.Toys;
+using static PlayerRoles.PlayableScps.Scp049.Scp049AudioPlayer;
+using SCP294.Utils;
 
 namespace SCP294.Types.Config
 {
@@ -108,15 +110,20 @@ namespace SCP294.Types.Config
                 Timing.CallDelayed(0.1f, () =>
                 {
 
-                    player.ShowHint("La warhead è già esplosa, il drink non ha avuto nessun effetto",5f);
+                    player.ShowHint("La warhead è già esplosa, il drink non ha avuto nessun effetto", 5f);
                 });
             }
             else if (Map.IsLczDecontaminated)
             {
                 List<Room> AllRoomExceptLcz = Room.List.Where(room => !room.Name.StartsWith("LCZ")).ToList();
                 player.Teleport(AllRoomExceptLcz.GetRandomValue());
+                SoundHandler.PlayAudio("enderman.ogg", 50, false, "enderman", player.Position, 2f, player);
             }
-            else player.Teleport(Room.List.GetRandomValue());
+            else
+            {
+                player.Teleport(Room.List.GetRandomValue());
+                SoundHandler.PlayAudio("enderman.ogg", 50, false, "enderman", player.Position, 2f, player);
+            }
         }
         public static void Grow(Player player)
         {
@@ -258,6 +265,11 @@ namespace SCP294.Types.Config
                 // VOICE
                 SCP294.Instance.PlayerVoicePitch[player.UserId] = Mathf.Clamp((1 - player.Scale.y) + 1f, 0.1f, 2f);
             });
+        }
+        public static void TestCallBack(Player player)
+        {
+            List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 8f);
+            Log.Info(players.ToArray().ToString());
         }
     }
 }

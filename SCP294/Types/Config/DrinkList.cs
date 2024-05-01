@@ -616,21 +616,34 @@ namespace SCP294.Types.Config
       {
         DrinkNames = new List<string>()
         {
-          "Sonic",
+          "placeholder"
         },
         AntiColaModel = false,
         BackfireChance = 0.0f,
-        DrinkMessage = "GOTTA GO FAST",
+        DrinkMessage = "sei frocio",
+        DrinkEffects = new List<DrinkEffect>(),
+        DrinkCallback = new Action<Player>(DrinkCallbacks.TestCallBack)
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Verstappen",
+        },
+        AntiColaModel = false,
+        BackfireChance = 0.0f,
+        DrinkMessage = "TU TU TURU",
         DrinkEffects = new List<DrinkEffect>()
         {
           new DrinkEffect()
           {
-            EffectAmount = (byte) 150,
+            EffectAmount = (byte) 175,
             EffectType = (EffectType) 22,
             Time = 10f,
             ShouldAddIfPresent = true
           }
-        }
+        },
+        DrinkCallback = new Action<Player>(player => SoundHandler.PlayAudio("verstappen.ogg", 50, true, "RB19", player.Position, 10f, player))
       }
     };
     }
