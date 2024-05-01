@@ -15,6 +15,8 @@ using Exiled.API.Extensions;
 using PlayerRoles;
 using Exiled.CustomItems.API.Features;
 using PlayerRoles.RoleAssign;
+using MapGeneration.Distributors;
+using Exiled.API.Features.Toys;
 
 namespace SCP294.Types.Config
 {
@@ -99,6 +101,20 @@ namespace SCP294.Types.Config
             ChangeSizeZ(player, -0.15f);
             LimitSizeOnDrinks(player);
         }
+        public static void Enderman(Player player)
+        {
+            Log.Info(Room.List.GetRandomValue().Name);
+            if (Warhead.IsDetonated)
+            {
+                player.Teleport(ZoneType.Surface);
+            }
+            else if (Map.IsLczDecontaminated)
+            {
+                List<Room> AllRoomExceptLcz = Room.List.Where(room => !room.Name.StartsWith("LCZ")).ToList();
+                player.Teleport(AllRoomExceptLcz.GetRandomValue());
+            }
+            else player.Teleport(Room.List.GetRandomValue());
+        }
         public static void Grow(Player player)
         {
             ChangeSizeX(player, 0.15f);
@@ -147,6 +163,14 @@ namespace SCP294.Types.Config
                 player.RoleManager.ServerSetRole(RoleTypeId.NtfCaptain, RoleChangeReason.RemoteAdmin);
             }
             else if (player.Role.Team == Team.FoundationForces)
+            {
+                player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
+            }
+            else if (player.Role.Team == Team.ClassD && Warhead.IsDetonated)
+            {
+                player.RoleManager.ServerSetRole(RoleTypeId.NtfCaptain, RoleChangeReason.RemoteAdmin);
+            }
+            else if (player.Role.Team == Team.Scientists && Warhead.IsDetonated)
             {
                 player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
             }

@@ -400,7 +400,7 @@ namespace SCP294.Types.Config
         AntiColaModel = false,
         BackfireChance = 0.0f,
         DrinkCallback = new Action<Player>(DrinkCallbacks.Boykisser),
-        DrinkMessage = "Ora ti piace baciare i maschi ufficialmente UWU OWO",
+        DrinkMessage = "",
         DrinkEffects = new List<DrinkEffect>()
       },
       new CustomDrink()
@@ -529,6 +529,27 @@ namespace SCP294.Types.Config
         DrinkMessage = "Ti senti più obeso...",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.Wide)
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Enderman"
+        },
+        AntiColaModel = false,
+        BackfireChance = 0.0f,
+        DrinkMessage = "",
+        DrinkEffects = new List<DrinkEffect>()
+        {
+          new DrinkEffect()
+          {
+            EffectType = EffectType.SinkHole,
+            EffectAmount = (byte) 1,
+            ShouldAddIfPresent = true,
+            Time = 0.3f
+          }
+        },
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Enderman)
       },
       new CustomDrink()
       {
