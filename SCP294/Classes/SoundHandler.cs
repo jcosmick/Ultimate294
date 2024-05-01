@@ -24,7 +24,11 @@ namespace SCP294
 
         // Borrowed from AutoEvents <3
         public static List<ReferenceHub> AudioPlayers = new List<ReferenceHub>();
-        public static void PlayAudio(string audioFile, byte volume, bool loop, string soundName, Vector3 position, float dur = 0)
+
+        /// <summary>
+        /// Pass player if you want the audio npc to follow the player
+        /// </summary>
+        public static void PlayAudio(string audioFile, byte volume, bool loop, string soundName, Vector3 position, float dur = 0, Player player = null)
         {
             try
             {
@@ -41,6 +45,11 @@ namespace SCP294
                 audioNpc.ReferenceHub.playerStats.GetModule<AdminFlagsStat>().SetFlag(AdminFlags.GodMode, true);
                 var hubPlayer = audioNpc.ReferenceHub;
                 AudioPlayers.Add(hubPlayer);
+
+                if (player != null)
+                {
+                    Timing.RunCoroutine(FollowPlayerPosition(audioNpc, player));
+                }
 
                 hubPlayer.authManager.InstanceMode = ClientInstanceMode.Unverified;
 
@@ -108,6 +117,21 @@ namespace SCP294
                 Log.Error($"Error on: {e.Data} -- {e.StackTrace}");
             }
         }
+
+        private static IEnumerator<float> FollowPlayerPosition(Npc audioNpc, Player player)
+        {
+            while (true)
+            {
+                if (player.Role != RoleTypeId.Spectator && player.Role != RoleTypeId.None)
+                {
+                    Vector3 playerPosition = player.Position;
+                    playerPosition.y += 10f;
+                    audioNpc.Teleport(playerPosition);
+                }
+                yield return Timing.WaitForSeconds(0.001f); // Adjust delay as needed
+            }
+        }
+
         public static void StopAudio()
         {
             foreach (var player in AudioPlayers)
