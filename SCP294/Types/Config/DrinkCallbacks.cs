@@ -103,10 +103,13 @@ namespace SCP294.Types.Config
         }
         public static void Enderman(Player player)
         {
-            Log.Info(Room.List.GetRandomValue().Name);
             if (Warhead.IsDetonated)
             {
-                player.Teleport(ZoneType.Surface);
+                Timing.CallDelayed(0.1f, () =>
+                {
+
+                    player.ShowHint("La warhead è già esplosa, il drink non ha avuto nessun effetto",5f);
+                });
             }
             else if (Map.IsLczDecontaminated)
             {
@@ -149,10 +152,17 @@ namespace SCP294.Types.Config
         }
         public static void Tradimento(Player player)
         {
-            if (player.Role.Team == Team.ClassD)
+            if (player.Role.Team == Team.ClassD && (Warhead.IsDetonated || Map.IsLczDecontaminated))
+            {
+                player.RoleManager.ServerSetRole(RoleTypeId.NtfCaptain, RoleChangeReason.RemoteAdmin);
+            }
+            else if (player.Role.Team == Team.Scientists && (Warhead.IsDetonated || Map.IsLczDecontaminated))
+            {
+                player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
+            }
+            else if (player.Role.Team == Team.ClassD)
             {
                 player.RoleManager.ServerSetRole(RoleTypeId.Scientist, RoleChangeReason.RemoteAdmin);
-                
             }
             else if (player.Role.Team == Team.Scientists)
             {
@@ -166,14 +176,7 @@ namespace SCP294.Types.Config
             {
                 player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
             }
-            else if (player.Role.Team == Team.ClassD && Warhead.IsDetonated)
-            {
-                player.RoleManager.ServerSetRole(RoleTypeId.NtfCaptain, RoleChangeReason.RemoteAdmin);
-            }
-            else if (player.Role.Team == Team.Scientists && Warhead.IsDetonated)
-            {
-                player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
-            }
+            
         }
         public static void Thin(Player player)
         {
