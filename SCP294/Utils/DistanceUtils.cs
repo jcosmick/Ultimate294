@@ -1,4 +1,5 @@
-﻿using PluginAPI.Core;
+﻿
+using Exiled.API.Features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace SCP294.Utils
         public static List<Player> getAllPlayersInRange(Vector3 center, float range)
         {
             List<Player> playersInRange = new List<Player>();
-            foreach (var player in Player.GetPlayers())
+            foreach (var player in PluginAPI.Core.Player.GetPlayers())
             {
                 if (player.IsAlive && player.Role != PlayerRoles.RoleTypeId.Tutorial && player.Role != PlayerRoles.RoleTypeId.Spectator)
                 {
