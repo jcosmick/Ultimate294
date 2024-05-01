@@ -23,7 +23,11 @@ namespace SCP294.Utils
             {
                 if (player.IsAlive && player.Role != PlayerRoles.RoleTypeId.Tutorial && player.Role != PlayerRoles.RoleTypeId.Spectator)
                 {
-                    playersInRange.Add(player);
+                    if(isInRange(center, player.Position, range)) 
+                    {
+                        playersInRange.Add(player);
+                    }
+                    
                 }
             }
             Log.Debug(playersInRange.ToArray().ToString());
