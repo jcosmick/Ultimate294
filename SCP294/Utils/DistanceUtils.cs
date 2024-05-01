@@ -20,7 +20,7 @@ namespace SCP294.Utils
             List<Player> playersInRange = new List<Player>();
             foreach (var player in Player.GetPlayers())
             {
-                if (player.IsAlive)
+                if (player.IsAlive && player.Role != PlayerRoles.RoleTypeId.Tutorial && player.Role != PlayerRoles.RoleTypeId.Spectator)
                 {
                     playersInRange.Add(player);
                 }
