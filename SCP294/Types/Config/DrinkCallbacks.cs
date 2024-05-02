@@ -280,11 +280,12 @@ namespace SCP294.Types.Config
             List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 8f);
             players.ForEach(p => {
                 if(p.DisplayNickname != player.DisplayNickname){
-                Log.Debug(p.DisplayNickname);
-                    p.EnableEffect(EffectType.Disabled, 5f);
+                    Log.Debug(p.DisplayNickname);
+                    p.ShowHint("I guess we got to pay for our sins");
+                    p.EnableEffect(EffectType.SinkHole, 5f);
                 }
             });
-            
+            SoundHandler.PlayAudio("deadeye.ogg", 50, false, "deadeye", player.Position, 5f, player);
         }
     }
 }
