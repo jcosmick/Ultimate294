@@ -616,6 +616,34 @@ namespace SCP294.Types.Config
       {
         DrinkNames = new List<string>()
         {
+          "SCP-106 (uomo nero)"
+        },
+        AntiColaModel = false,
+        BackfireChance = 0.0f,
+        DrinkMessage = "per 15 secondi sarai nascosto nella dimensione dell'uomo nero \n non provare a scappare",
+        DrinkEffects = new List<DrinkEffect>()
+        {
+          new DrinkEffect()
+          {
+            EffectType = EffectType.SinkHole,
+            EffectAmount = (byte) 255,
+            ShouldAddIfPresent = true,
+            Time = 15f
+          },
+          new DrinkEffect()
+          {
+            EffectType = EffectType.Stained,
+            EffectAmount = (byte) 255,
+            ShouldAddIfPresent = true,
+            Time = 15f
+          }
+        },
+        DrinkCallback = new Action<Player>(DrinkCallbacks.uomonero)
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
           "placeholder"
         },
         AntiColaModel = false,

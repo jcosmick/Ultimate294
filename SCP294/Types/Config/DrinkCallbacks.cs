@@ -177,8 +177,24 @@ namespace SCP294.Types.Config
             {
                 player.RoleManager.ServerSetRole(RoleTypeId.ChaosRepressor, RoleChangeReason.RemoteAdmin);
             }
-            
+
         }
+        public static void uomonero(Player player)
+        {
+            var posizione = player.Position;
+            player.Teleport(RoomType.Pocket);
+            Timing.RunCoroutine(uscita());
+
+            IEnumerator<float> uscita()
+            {
+                    yield return Timing.WaitForSeconds(15f);
+                    player.Teleport(posizione);
+                    yield break;
+            }
+
+
+        }
+
         public static void Thin(Player player)
         {
             ChangeSizeX(player, -0.15f);
