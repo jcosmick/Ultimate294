@@ -19,6 +19,9 @@ using MapGeneration.Distributors;
 using Exiled.API.Features.Toys;
 using static PlayerRoles.PlayableScps.Scp049.Scp049AudioPlayer;
 using SCP294.Utils;
+using System.Threading;
+using CommandSystem.Commands.RemoteAdmin;
+using Exiled.API.Features.Pickups;
 
 namespace SCP294.Types.Config
 {
@@ -46,22 +49,17 @@ namespace SCP294.Types.Config
                 player.Kill(drinkInfo.KillPlayerString);
             }
         }
-        public static void AlmostDeadJuice(Player player) // Almost Dead Juice
-        {
-            if (player.IsScp)
+        public static readonly List<Color> Colors = new List<Color>
             {
-                PlayerEffectsController controller = player.ReferenceHub.playerEffectsController;
-                if (player.TryGetEffect(EffectType.CardiacArrest, out StatusEffectBase statusEffect))
-                {
-                    byte newValue = (byte)Mathf.Min(255, 1);
-                    controller.ChangeState(statusEffect.GetType().Name, newValue, 60f, false);
-                }
-            }
-            else
-            {
-                player.Health = 1;
-            }
-        }
+                new Color(1, 0.2f, 0.2f),
+                new Color(1, 0.5f, 0),
+                Color.yellow,
+                Color.green*1.1f,
+                Color.cyan,
+                new Color(0f, 0.65f, 1.3f),
+                new Color(0.78f, 0.13f, 1.3f),
+            };
+
 
         public static void BallSpam(Player player) // SCP-018
         {
@@ -74,26 +72,22 @@ namespace SCP294.Types.Config
 
         public static void Pirots(Player player) // maxwin 20 monete
         {
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            Projectile.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
+            var currentColor = Color.clear;
+            SoundHandler.PlayAudio("pirots.ogg", 50, false, "pirots", player.Position, 12f, player);
+            Timing.RunCoroutine(pirots());
+
+            IEnumerator<float> pirots()
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    yield return Timing.WaitForSeconds(0.5f);
+                    currentColor = Color.Lerp(Colors[(int)(i % Colors.Count)], Colors[(int)((i + 1) % Colors.Count)], i % 1);
+                    player.CurrentRoom.Color = currentColor * 1.5f;
+                    Pickup.CreateAndSpawn(ItemType.Coin, player.Position, default, player).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
+                }
+                Map.ResetLightsColor();
+                yield break;
+            }
         }
 
         public static void Shrink(Player player)
@@ -269,7 +263,7 @@ namespace SCP294.Types.Config
         public static void TestCallBack(Player player)
         {
             List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 8f);
-            Log.Info(players.ToArray().ToString());
+            players.ForEach(p => Log.Info(p.DisplayNickname));
         }
     }
 }
