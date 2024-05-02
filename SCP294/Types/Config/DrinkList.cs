@@ -644,13 +644,13 @@ namespace SCP294.Types.Config
       {
         DrinkNames = new List<string>()
         {
-          "placeholder"
+          "DeadEye"
         },
         AntiColaModel = false,
         BackfireChance = 0.0f,
-        DrinkMessage = "sei frocio",
+        DrinkMessage = "I guess we got to pay for our sins",
         DrinkEffects = new List<DrinkEffect>(),
-        DrinkCallback = new Action<Player>(DrinkCallbacks.TestCallBack)
+        DrinkCallback = new Action<Player>(DrinkCallbacks.DeadEye)
       },
       new CustomDrink()
       {
