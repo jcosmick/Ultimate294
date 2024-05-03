@@ -10,6 +10,8 @@ using SCP294.Types;
 using HarmonyLib;
 using Exiled.API.Enums;
 using VoiceChat.Codec;
+using UncomplicatedCustomItems.API;
+using SCP294.CustomItems;
 
 namespace SCP294
 {
@@ -44,6 +46,7 @@ namespace SCP294
             if (Config.Debug)
                 Log.Info("Registering events...");
             RegisterEvents();
+            Manager.Register(new Revolver());
 
             DrinkManager.LoadBaseDrinks();
 

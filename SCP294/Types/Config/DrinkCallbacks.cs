@@ -22,6 +22,10 @@ using SCP294.Utils;
 using System.Threading;
 using CommandSystem.Commands.RemoteAdmin;
 using Exiled.API.Features.Pickups;
+using Exiled.API.Features.Items;
+using SCP294.CustomItems;
+using UncomplicatedCustomItems.API.Features;
+using UncomplicatedCustomItems.API;
 
 namespace SCP294.Types.Config
 {
@@ -59,8 +63,7 @@ namespace SCP294.Types.Config
                 new Color(0f, 0.65f, 1.3f),
                 new Color(0.78f, 0.13f, 1.3f),
             };
-
-
+        
         public static void BallSpam(Player player) // SCP-018
         {
             int numBallToSpawn = 5;
@@ -277,7 +280,13 @@ namespace SCP294.Types.Config
         }
         public static void DeadEye(Player player)
         {
-            List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 8f);
+            SummonedCustomItem cane = SummonedCustomItem.Summon(new Revolver(), player);
+            Timing.CallDelayed(0.3f, () =>
+            {
+                player.CurrentItem = Item.Get(cane.Serial);
+            });
+                    
+            List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 16f);
             players.ForEach(p => {
                 if(p.DisplayNickname != player.DisplayNickname){
                     Log.Debug(p.DisplayNickname);
@@ -285,7 +294,13 @@ namespace SCP294.Types.Config
                     p.EnableEffect(EffectType.SinkHole, 5f);
                 }
             });
-            SoundHandler.PlayAudio("deadeye.ogg", 50, false, "deadeye", player.Position, 5f, player);
+            SoundHandler.PlayAudio("deadeye.ogg", 89, false, "deadeye", player.Position, 5f, player);
+            Timing.CallDelayed(5f, () => {
+                if (Utilities.TryGetSummonedCustomItem(cane.Serial, out SummonedCustomItem Summoned))
+                {
+                    Summoned.Destroy();
+                }
+            });
         }
     }
 }
