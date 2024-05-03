@@ -280,10 +280,10 @@ namespace SCP294.Types.Config
         }
         public static void DeadEye(Player player)
         {
-            SummonedCustomItem cane = SummonedCustomItem.Summon(new Revolver(), player);
+            SummonedCustomItem revolver = SummonedCustomItem.Summon(new Revolver(), player);
             Timing.CallDelayed(0.3f, () =>
             {
-                player.CurrentItem = Item.Get(cane.Serial);
+                player.CurrentItem = Item.Get(revolver.Serial);
             });
                     
             List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 16f);
@@ -296,7 +296,7 @@ namespace SCP294.Types.Config
             });
             SoundHandler.PlayAudio("deadeye.ogg", 89, false, "deadeye", player.Position, 5f, player);
             Timing.CallDelayed(5f, () => {
-                if (Utilities.TryGetSummonedCustomItem(cane.Serial, out SummonedCustomItem Summoned))
+                if (Utilities.TryGetSummonedCustomItem(revolver.Serial, out SummonedCustomItem Summoned))
                 {
                     Summoned.Destroy();
                 }

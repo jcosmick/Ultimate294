@@ -15,6 +15,7 @@ namespace SCP294.Types.Config
           {
           "SCP-207 (coca-cola)"
           },
+        Id = "SCP-207",
         AntiColaModel = false,
         HealAmount = 30f,
         BackfireChance = 0.0f,
@@ -36,6 +37,7 @@ namespace SCP294.Types.Config
         {
           "anti-SCP-207 (pepsi)"
         },
+        Id = "anti-SCP-207",
         AntiColaModel = true,
         BackfireChance = 0.0f,
         DrinkMessage = "è estremamente calda",

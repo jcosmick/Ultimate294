@@ -16,6 +16,10 @@ namespace SCP294.Types.Config
             ""
         };
         /// <summary>
+        /// Unique id of the drink
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>\\
         /// Should the Drink use the AntiCola model instead of the normal Cola Model
         /// </summary>
         public bool AntiColaModel { get; set; } = false;

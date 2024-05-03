@@ -1,5 +1,6 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Interfaces;
+using SCP294.Classes;
 using SCP294.Types;
 using System;
 using System.Collections.Generic;
@@ -87,6 +88,33 @@ namespace SCP294.Config
         /// </summary>
         [Description("How close to the machine does the player have to be?")]
         public float UseDistance { get; set; } = 2.5f;
+        /// <summary>
+        /// Configure the Rarities of drinks
+        /// </summary>
+        [Description("Configure the Rarities of drinks")]
+        public RarityConfig RarirtyConfigs { get; set; } = new RarityConfig()
+        {
+            rarities = new List<Rarity>()
+            {
+                new Rarity(){
+                    Name = "Common",
+                    Percentage = 40f,
+                    Drinks = ["ciao", "beee"]
+                },
+                new Rarity()
+                {
+                    Name = "Rare",
+                    Percentage = 35f,
+                    Drinks = []
+                },
+                new Rarity()
+                {
+                    Name = "Legendary",
+                    Percentage = 25f,
+                    Drinks = []
+                }
+            }
+        };
         /// <summary>
         /// Should the Cola be dispensed into the machine's output? Set to False to put it in the player's inventory.
         /// </summary>
