@@ -429,4 +429,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)Ultimate294.dll" "C:\Users\jcosmick\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
