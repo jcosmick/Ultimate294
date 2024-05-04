@@ -109,13 +109,13 @@ namespace SCP294.Config
                 {
                     Name = "Rare",
                     Percentage = 30f,
-                    Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",  "Enderman", "SCP-106 (uomo nero)", "Coraggio"]
+                    Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",  "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo"]
                 },
                 new Rarity()
                 {
                     Name = "Epic",
                     Percentage = 15f,
-                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento",]
+                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento", "Juggernog"]
                 },
                 new Rarity()
                 {

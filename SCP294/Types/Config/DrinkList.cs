@@ -625,6 +625,30 @@ namespace SCP294.Types.Config
           }
         },
         DrinkCallback = new Action<Player>(player => SoundHandler.PlayAudio("verstappen.ogg", 50, true, "RB19", player.Position, 10f, player))
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Juggernog"
+        },
+        AntiColaModel = false,
+        BackfireChance = 0.0f,
+        DrinkMessage = "<color=#C91010> you need to feel big and strong</color>\n<color=#FFFFFF>reach for Juggernog tonight!</color>",
+        DrinkEffects = new List<DrinkEffect>(),
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Juggernog)
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Max ammo"
+        },
+        AntiColaModel = false,
+        BackfireChance = 0.0f,
+        DrinkMessage = "<color=#C91010> MAX AMMO!</color>",
+        DrinkEffects = new List<DrinkEffect>(),
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Maxammo)
       }
     };
     }

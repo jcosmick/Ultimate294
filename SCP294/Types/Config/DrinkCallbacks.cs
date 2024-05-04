@@ -302,5 +302,24 @@ namespace SCP294.Types.Config
                 }
             });
         }
+        public static void Juggernog(Player player)
+        {
+            SoundHandler.PlayAudio("juggernog.ogg", 50, false, "juggernog", player.Position, 5f, player);
+            player.MaxHealth = (player.MaxHealth + 25);
+            player.Heal(150);
+            if (player.MaxHealth > 150)
+            {
+                player.MaxHealth = 150;
+            }
+        }
+        public static void Maxammo(Player player)
+        {
+            SoundHandler.PlayAudio("maxammo.ogg", 50, false, "maxammo", player.Position, 5f, player);
+            player.AddAmmo(AmmoType.Nato556, (ushort)player.GetAmmoLimit(AmmoType.Nato556));
+            player.AddAmmo(AmmoType.Nato762, (ushort)player.GetAmmoLimit(AmmoType.Nato762));
+            player.AddAmmo(AmmoType.Nato9, (ushort)player.GetAmmoLimit(AmmoType.Nato9));
+            player.AddAmmo(AmmoType.Ammo44Cal, (ushort)player.GetAmmoLimit(AmmoType.Ammo44Cal));
+            player.AddAmmo(AmmoType.Ammo12Gauge, (ushort)player.GetAmmoLimit(AmmoType.Ammo12Gauge));
+        }
     }
 }
