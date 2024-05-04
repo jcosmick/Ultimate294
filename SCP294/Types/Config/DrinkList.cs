@@ -203,60 +203,6 @@ namespace SCP294.Types.Config
       {
         DrinkNames = new List<string>()
         {
-          "Eroina"
-        },
-        Tantrum = true,
-        AntiColaModel = false,
-        BackfireChance = 0.0f,
-        DrinkMessage = "Ha un sapore terribile",
-        DrinkEffects = new List<DrinkEffect>()
-        {
-          new DrinkEffect()
-          {
-            EffectAmount = (byte) 1,
-            EffectType = (EffectType) 1,
-            Time = 3f,
-            ShouldAddIfPresent = true
-          },
-          new DrinkEffect()
-          {
-            EffectAmount = (byte) 1,
-            EffectType = (EffectType) 35,
-            Time = 3f,
-            ShouldAddIfPresent = true
-          },
-          new DrinkEffect()
-          {
-            EffectAmount = (byte) 1,
-            EffectType = (EffectType) 4,
-            Time = 30f,
-            ShouldAddIfPresent = true
-          }
-        }
-      },
-      new CustomDrink()
-      {
-        DrinkNames = new List<string>() { "Vita" },
-        AntiColaModel = false,
-        BackfireChance = 0.0f,
-        HealStatusEffects = true,
-        HealAmount = 150f,
-        DrinkMessage = "Il drink ha un sapore unico, non ti sei mai sentito meglio.",
-        DrinkEffects = new List<DrinkEffect>()
-        {
-          new DrinkEffect()
-          {
-            EffectAmount = (byte) 1,
-            EffectType = (EffectType) 4,
-            Time = 10f,
-            ShouldAddIfPresent = true
-          }
-        }
-      },
-      new CustomDrink()
-      {
-        DrinkNames = new List<string>()
-        {
           "Sborra"
         },
         Tantrum = true,
@@ -667,6 +613,13 @@ namespace SCP294.Types.Config
           {
             EffectAmount = (byte) 175,
             EffectType = (EffectType) 22,
+            Time = 10f,
+            ShouldAddIfPresent = true
+          },
+          new DrinkEffect()
+          {
+            EffectAmount = (byte) 1,
+            EffectType = (EffectType) 40,
             Time = 10f,
             ShouldAddIfPresent = true
           }

@@ -21,7 +21,7 @@ namespace SCP294.Classes
 
         public void LoadBaseDrinks()
         {
-            SCP294.Instance.Config.RarirtyConfigs.NormalizeRarities(100);
+            SCP294.Instance.Config.RarityConfigs.NormalizeRarities(100);
             LoadedDrinks = LoadedDrinks.Concat(DrinkList.DefaultDrinks).ToList();
             if (SCP294.Instance.Config.EnableCommunityDrinks) LoadedDrinks = LoadedDrinks.Concat(DrinkList.CommunityDrinks).ToList();
         }

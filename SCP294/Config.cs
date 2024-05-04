@@ -102,20 +102,32 @@ namespace SCP294.Config
             {
                 new Rarity(){
                     Name = "Common",
-                    Percentage = 8f,
-                    Drinks = ["ciao", "beee"]
+                    Percentage = 45f,
+                    Drinks = [ "Caffè", "Cocaina", "Omosessuale", "Red Bull", "Felicità", "Sborra", "Velocità", "Erba", "SCP-173", "SCP-999 (mostro degli abbracci)", "Anoressia", "Obesità", "Elio", "Zolfo", "Nanismo", "Gigantismo"]
                 },
                 new Rarity()
                 {
                     Name = "Rare",
-                    Percentage = 3f,
-                    Drinks = []
+                    Percentage = 30f,
+                    Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",  "Enderman", "SCP-106 (uomo nero)", "Coraggio"]
+                },
+                new Rarity()
+                {
+                    Name = "Epic",
+                    Percentage = 15f,
+                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento",]
                 },
                 new Rarity()
                 {
                     Name = "Legendary",
+                    Percentage = 10f,
+                    Drinks = ["Pirots", "Zombie nano", "DeadEye", "Verstappen"]
+                },
+                new Rarity()
+                {
+                    Name = "???",
                     Percentage = 1f,
-                    Drinks = []
+                    Drinks = ["Anti-materia"]
                 }
             }
         };

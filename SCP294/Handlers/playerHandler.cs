@@ -15,6 +15,7 @@ using RelativePositioning;
 using SCP294.Classes;
 using SCP294.Types;
 using SCP294.Types.Config;
+using SCP294.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace SCP294.handlers
 
             if (SCP294.Instance.CustomDrinkItems.TryGetValue(args.Item.Serial, out DrinkInfo drinkInfo))
             {
-                args.Player.ShowHint($"You pulled out the Drink of {drinkInfo.DrinkName}", 3);
+                args.Player.ShowHint($"You pulled out the Drink of {drinkInfo.DrinkName}, that is {RarityUtils.GetRarityFromDrink(drinkInfo.DrinkName)}", 3);
             }
         }
 
