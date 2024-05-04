@@ -15,10 +15,6 @@ namespace SCP294.Types.Config
         public List<string> DrinkNames { get; set; } = new List<string>(){
             ""
         };
-        /// <summary>
-        /// Unique id of the drink
-        /// </summary>
-        public string Id { get; set; }
         /// <summary>\\
         /// Should the Drink use the AntiCola model instead of the normal Cola Model
         /// </summary>

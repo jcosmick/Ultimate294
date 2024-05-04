@@ -102,19 +102,19 @@ namespace SCP294.Config
             {
                 new Rarity(){
                     Name = "Common",
-                    Percentage = 40f,
+                    Percentage = 8f,
                     Drinks = ["ciao", "beee"]
                 },
                 new Rarity()
                 {
                     Name = "Rare",
-                    Percentage = 35f,
+                    Percentage = 3f,
                     Drinks = []
                 },
                 new Rarity()
                 {
                     Name = "Legendary",
-                    Percentage = 25f,
+                    Percentage = 1f,
                     Drinks = []
                 }
             }
