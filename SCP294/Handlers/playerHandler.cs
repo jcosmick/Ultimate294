@@ -66,13 +66,13 @@ namespace SCP294.handlers
                 return;
             }
             ArraySegment<string> arguments = new ArraySegment<string>();
-            if (!SCP294.Instance.Config.EnableRaririty)
+            if (!SCP294.Instance.Config.EnableRarity)
                 arguments = new ArraySegment<string>(SCP294.Instance.DrinkManager.LoadedDrinks.RandomItem<CustomDrink>().DrinkNames.RandomItem<string>().Split());
             else
             {
                 System.Random random = new System.Random();
                 int randomNumber = random.Next(0, 101); //1-100
-                Rarity rarity = SCP294.Instance.Config.RarirtyConfigs.GetRandomRarity(randomNumber);
+                Rarity rarity = SCP294.Instance.Config.RarityConfigs.GetRandomRarity(randomNumber);
                 arguments = new ArraySegment<string>(rarity.Drinks.GetRandomValue().Split());
             }
             

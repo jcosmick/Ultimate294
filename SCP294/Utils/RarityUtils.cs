@@ -10,9 +10,18 @@ namespace SCP294.Utils
 {
     public class RarityUtils
     {
+        public static Rarity GetRarityFromDrink(string drinkName)
+        {
+            foreach (var rarity in SCP294.Instance.Config.RarityConfigs.rarities)
+            {
+                if (rarity.Drinks.Contains(drinkName))
+                    return rarity;
+            }
+            return null;
+        }
         public static Rarity GetRarityFromDrink(CustomDrink drink)
         {
-            foreach (var rarity in SCP294.Instance.Config.RarirtyConfigs.rarities)
+            foreach (var rarity in SCP294.Instance.Config.RarityConfigs.rarities)
             {
                 if (rarity.Drinks.Intersect(drink.DrinkNames).Any())
                     return rarity;

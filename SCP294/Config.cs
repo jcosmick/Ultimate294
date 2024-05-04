@@ -91,12 +91,12 @@ namespace SCP294.Config
         /// <summary>
         /// use rarity for drinks othrwise every drink has the same drop rate
         /// </summary>
-        public bool EnableRaririty { get; set; } = true;
+        public bool EnableRarity { get; set; } = true;
         /// <summary>
         /// Configure the Rarities of drinks
         /// </summary>
         [Description("Configure the Rarities of drinks")]
-        public RarityConfig RarirtyConfigs { get; set; } = new RarityConfig()
+        public RarityConfig RarityConfigs { get; set; } = new RarityConfig()
         {
             rarities = new List<Rarity>()
             {
