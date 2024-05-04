@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Classes\DrinkManager.cs" />
     <Compile Include="Classes\OpusComponent.cs" />
+    <Compile Include="Classes\Rarity.cs" />
+    <Compile Include="Classes\RarityConfig.cs" />
     <Compile Include="Classes\SCP294Object.cs" />
     <Compile Include="Classes\SoundHandler.cs" />
     <Compile Include="Commands\SCP294AdminCommand.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="Types\Config\SpawningConfig.cs" />
     <Compile Include="Types\Config\SpawnTransform.cs" />
     <Compile Include="Types\DrinkInfo.cs" />
-    <Compile Include="Types\DrinkSound.cs" />
+    <Compile Include="Models\DrinkSound.cs" />
     <Compile Include="Utils\DistanceUtils.cs" />
     <Compile Include="Utils\RoomHandler.cs" />
     <Compile Include="Commands\SCP294Command.cs" />
@@ -160,7 +162,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UncomplicatedCustomItems">
-      <HintPath>..\..\..\..\Downloads\UncomplicatedCustomItems.dll</HintPath>
+      <HintPath>..\packages\lib\UncomplicatedCustomItems.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>..\..\..\..\Downloads\Master\Unity.Burst.dll</HintPath>
@@ -428,6 +430,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)Ultimate294.dll" "C:\Users\jcosmick\AppData\Roaming\EXILED\Plugins"</PostBuildEvent>

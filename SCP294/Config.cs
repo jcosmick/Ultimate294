@@ -89,6 +89,10 @@ namespace SCP294.Config
         [Description("How close to the machine does the player have to be?")]
         public float UseDistance { get; set; } = 2.5f;
         /// <summary>
+        /// use rarity for drinks othrwise every drink has the same drop rate
+        /// </summary>
+        public bool EnableRaririty { get; set; } = true;
+        /// <summary>
         /// Configure the Rarities of drinks
         /// </summary>
         [Description("Configure the Rarities of drinks")]
