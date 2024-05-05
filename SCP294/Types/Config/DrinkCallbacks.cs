@@ -1,31 +1,19 @@
 ﻿using CustomPlayerEffects;
 using Exiled.API.Enums;
+using Exiled.API.Extensions;
 using Exiled.API.Features;
+using Exiled.API.Features.Items;
+using Exiled.API.Features.Pickups;
 using Exiled.API.Features.Pickups.Projectiles;
 using MEC;
-using SCP294.handlers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using Exiled.API.Extensions;
 using PlayerRoles;
-using Exiled.CustomItems.API.Features;
-using PlayerRoles.RoleAssign;
-using MapGeneration.Distributors;
-using Exiled.API.Features.Toys;
-using static PlayerRoles.PlayableScps.Scp049.Scp049AudioPlayer;
-using SCP294.Utils;
-using System.Threading;
-using CommandSystem.Commands.RemoteAdmin;
-using Exiled.API.Features.Pickups;
-using Exiled.API.Features.Items;
 using SCP294.CustomItems;
-using UncomplicatedCustomItems.API.Features;
+using SCP294.Utils;
+using System.Collections.Generic;
+using System.Linq;
 using UncomplicatedCustomItems.API;
+using UncomplicatedCustomItems.API.Features;
+using UnityEngine;
 
 namespace SCP294.Types.Config
 {
@@ -63,7 +51,7 @@ namespace SCP294.Types.Config
                 new Color(0f, 0.65f, 1.3f),
                 new Color(0.78f, 0.13f, 1.3f),
             };
-        
+
         public static void BallSpam(Player player) // SCP-018
         {
             int numBallToSpawn = 5;
@@ -138,7 +126,7 @@ namespace SCP294.Types.Config
         public static void Flash(Player player)
         {
             int numFlashToSpawn = 4;
-            for(int i = 0; i < numFlashToSpawn; i++)
+            for (int i = 0; i < numFlashToSpawn; i++)
             {
                 Projectile.CreateAndSpawn(ProjectileType.Flashbang, player.Position, default, true).GameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
             }
@@ -190,9 +178,9 @@ namespace SCP294.Types.Config
 
             IEnumerator<float> uscita()
             {
-                    yield return Timing.WaitForSeconds(15f);
-                    player.Teleport(posizione);
-                    yield break;
+                yield return Timing.WaitForSeconds(15f);
+                player.Teleport(posizione);
+                yield break;
             }
 
 
@@ -285,17 +273,20 @@ namespace SCP294.Types.Config
             {
                 player.CurrentItem = Item.Get(revolver.Serial);
             });
-                    
+
             List<Player> players = DistanceUtils.getAllPlayersInRange(player.Position, 16f);
-            players.ForEach(p => {
-                if(p.DisplayNickname != player.DisplayNickname){
+            players.ForEach(p =>
+            {
+                if (p.DisplayNickname != player.DisplayNickname)
+                {
                     Log.Debug(p.DisplayNickname);
                     p.ShowHint("I guess we got to pay for our sins");
                     p.EnableEffect(EffectType.SinkHole, 5f);
                 }
             });
             SoundHandler.PlayAudio("deadeye.ogg", 89, false, "deadeye", player.Position, 5f, player);
-            Timing.CallDelayed(5f, () => {
+            Timing.CallDelayed(5f, () =>
+            {
                 if (Utilities.TryGetSummonedCustomItem(revolver.Serial, out SummonedCustomItem Summoned))
                 {
                     Summoned.Destroy();

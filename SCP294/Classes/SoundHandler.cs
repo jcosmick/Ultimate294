@@ -14,7 +14,6 @@ using System.IO;
 using UnityEngine;
 using VoiceChat;
 using VoiceChat.Codec;
-using YamlDotNet.Core.Tokens;
 
 namespace SCP294
 {
@@ -90,7 +89,7 @@ namespace SCP294
                 {
                     Timing.CallDelayed(dur, delegate
                     {
-                        hubPlayer.transform.position = new Vector3(-99999,-99999,-99999);
+                        hubPlayer.transform.position = new Vector3(-99999, -99999, -99999);
                         AudioPlayers.Remove(hubPlayer);
                         if (audioPlayer.CurrentPlay != null)
                         {

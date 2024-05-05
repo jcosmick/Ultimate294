@@ -1,12 +1,7 @@
-﻿using SCP294.Types.Config;
-using System;
+﻿using MEC;
+using SCP294.Types.Config;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MEC;
-using MapEditorReborn.API.Features.Objects;
-using Exiled.API.Features;
 
 namespace SCP294.Classes
 {
@@ -21,7 +16,8 @@ namespace SCP294.Classes
 
         public void LoadBaseDrinks()
         {
-            SCP294.Instance.Config.RarityConfigs.NormalizeRarities(100);
+            SCP294.Instance.RarityManager.Config = SCP294.Instance.Config.RarityConfigs;
+            SCP294.Instance.RarityManager.NormalizeRarities(100);
             LoadedDrinks = LoadedDrinks.Concat(DrinkList.DefaultDrinks).ToList();
             if (SCP294.Instance.Config.EnableCommunityDrinks) LoadedDrinks = LoadedDrinks.Concat(DrinkList.CommunityDrinks).ToList();
         }
@@ -38,7 +34,7 @@ namespace SCP294.Classes
         {
             RegisterDrink(new CustomDrink[] { newDrink });
         }
-        public static void RegisterDrink(CustomDrink[] newDrink) 
+        public static void RegisterDrink(CustomDrink[] newDrink)
         {
             Timing.RunCoroutine(AwaitAddDrink(newDrink));
         }

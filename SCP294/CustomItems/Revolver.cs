@@ -1,20 +1,8 @@
-﻿using Exiled.API.Enums;
-using Exiled.API.Features.Attributes;
-using Exiled.API.Features.DamageHandlers;
-using Exiled.API.Features.Spawn;
-using Exiled.CustomItems;
-using Exiled.CustomItems.API.Features;
-using Exiled.Events.EventArgs.Player;
-using InventorySystem.Items.Firearms.Attachments;
-using PlayerStatsSystem;
-using System.Collections.Generic;
-using System.ComponentModel;
-using UncomplicatedCustomItems.Elements;
+﻿using UncomplicatedCustomItems.Elements;
 using UncomplicatedCustomItems.Elements.SpecificData;
 using UncomplicatedCustomItems.Interfaces;
 using UncomplicatedCustomItems.Interfaces.SpecificData;
 using UnityEngine;
-using YamlDotNet.Serialization;
 
 namespace SCP294.CustomItems;
 public class Revolver : ICustomItem

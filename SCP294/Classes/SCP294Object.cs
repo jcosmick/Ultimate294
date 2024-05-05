@@ -1,28 +1,20 @@
-﻿using Exiled.API.Enums;
+﻿using CustomPlayerEffects;
+using Exiled.API.Enums;
 using Exiled.API.Features;
+using Exiled.API.Features.Items;
+using Exiled.API.Features.Pickups;
+using InventorySystem.Items.Pickups;
 using MapEditorReborn.API.Features;
 using MapEditorReborn.API.Features.Objects;
 using MapEditorReborn.API.Features.Serializable;
-using MapEditorReborn.Commands.ModifyingCommands.Scale;
+using MEC;
 using SCP294.Types;
+using SCP294.Types.Config;
 using SCP294.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MEC;
 using UnityEngine;
-using Exiled.API.Features.Pickups;
-using Exiled.API.Features.Toys;
-using InventorySystem.Items.Pickups;
-using InventorySystem.Items;
-using Exiled.API.Features.Items;
-using MapEditorReborn.Commands.ModifyingCommands.Position;
-using MapEditorReborn.Commands.ModifyingCommands.Rotation;
-using CustomPlayerEffects;
-using SCP294.Types.Config;
-using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace SCP294.Classes
 {
@@ -248,9 +240,11 @@ namespace SCP294.Classes
                     if (player.IsNPC) continue;
                     if (CanPlayerUse294(player))
                     {
-                        if (!SCP294.Instance.PlayersNear294.Contains(player.UserId)) {
+                        if (!SCP294.Instance.PlayersNear294.Contains(player.UserId))
+                        {
                             SchematicObject scp294 = GetClosest294(player);
-                            if (SCP294.Instance.SCP294UsesLeft.Keys.Contains(scp294) && SCP294.Instance.SCP294UsesLeft[scp294] == 0) {
+                            if (SCP294.Instance.SCP294UsesLeft.Keys.Contains(scp294) && SCP294.Instance.SCP294UsesLeft[scp294] == 0)
+                            {
                                 player.ShowHint("<size=300>\n</size>\n<size=35>You Approach SCP-294.</size>\n<size=30>It seems to have lost all power, rendering it unusable for now...</size>", 3);
                             }
                             else
@@ -287,7 +281,8 @@ namespace SCP294.Classes
 
                     CreateSCP294(SpawnRoom.Position + (SpawnRoom.Rotation * relativeOffsetTransform.Position), Quaternion.Euler(SpawnRoom.Rotation.eulerAngles + Quaternion.Euler(relativeOffsetTransform.Rotation.x, relativeOffsetTransform.Rotation.y, relativeOffsetTransform.Rotation.z).eulerAngles), relativeOffsetTransform.Scale);
                 }
-            } else 
+            }
+            else
             {
                 // Get Room and Visual
                 for (int i = 0; i < SCP294.Instance.Config.SpawningLocations.SpawnAmount; i++)
@@ -314,7 +309,7 @@ namespace SCP294.Classes
             // Add Illumination to Front
             Vector3 lightPos = scp294.Position;
             lightPos += scp294.Rotation * new Vector3(0f, 1.25f, -1.25f);
-            SCP294.Instance.SCP294LightSources.Add(scp294,ObjectSpawner.SpawnLightSource(new LightSourceSerializable()
+            SCP294.Instance.SCP294LightSources.Add(scp294, ObjectSpawner.SpawnLightSource(new LightSourceSerializable()
             {
                 Color = "#FFF",
                 Intensity = 0.25f,
@@ -344,7 +339,8 @@ namespace SCP294.Classes
                         SCP294.Instance.SCP294LightSources[scp294].Destroy();
                         SCP294.Instance.SCP294LightSources.Remove(scp294);
                     }
-                } catch (Exception) { }
+                }
+                catch (Exception) { }
                 scp294.Destroy();
             }
         }
@@ -370,10 +366,11 @@ namespace SCP294.Classes
         /// </summary>
         /// <param name="player">The Player who Triggered the Sound Effect. Used to get the SCP-294 closest to them</param>
         /// <param name="soundType">The Sound Type to play, either normal or unstable</param>
-        public static void PlayDispensingSound(Player player, DrinkSound soundType) {
+        public static void PlayDispensingSound(Player player, DrinkSound soundType)
+        {
             SchematicObject scp294 = GetClosest294(player);
 
-            SoundHandler.PlayAudio(new DrinkSoundFiles().List[(int)soundType], 50, false, "SCP-294", scp294.Position + new Vector3(0,1,0), 6f);
+            SoundHandler.PlayAudio(new DrinkSoundFiles().List[(int)soundType], 50, false, "SCP-294", scp294.Position + new Vector3(0, 1, 0), 6f);
         }
 
         /// <summary>
@@ -381,8 +378,10 @@ namespace SCP294.Classes
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public static bool CanPlayerUse294(Player player) {
-            foreach (SchematicObject scp294 in SCP294.Instance.SpawnedSCP294s.Keys) {
+        public static bool CanPlayerUse294(Player player)
+        {
+            foreach (SchematicObject scp294 in SCP294.Instance.SpawnedSCP294s.Keys)
+            {
                 if (!scp294) continue;
                 if (Vector3.Distance(player.Position, scp294.Position) < SCP294.Instance.Config.UseDistance) return true;
             }
@@ -401,7 +400,8 @@ namespace SCP294.Classes
             foreach (SchematicObject scp294 in SCP294.Instance.SpawnedSCP294s.Keys)
             {
                 if (!scp294) continue;
-                if (Vector3.Distance(player.Position, scp294.Position) < closestDistance) {
+                if (Vector3.Distance(player.Position, scp294.Position) < closestDistance)
+                {
                     closestDistance = Vector3.Distance(player.Position, scp294.Position);
                     closestObject = scp294;
                 };

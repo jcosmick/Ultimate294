@@ -1,17 +1,16 @@
-﻿using Exiled.API.Features;
-using Player = Exiled.Events.Handlers.Player;
-using Server = Exiled.Events.Handlers.Server;
+﻿using Exiled.API.Enums;
+using Exiled.API.Features;
+using HarmonyLib;
+using MapEditorReborn.API.Features.Objects;
+using MEC;
+using SCP294.Classes;
+using SCP294.CustomItems;
+using SCP294.Types;
 using System;
 using System.Collections.Generic;
-using MEC;
-using MapEditorReborn.API.Features.Objects;
-using SCP294.Classes;
-using SCP294.Types;
-using HarmonyLib;
-using Exiled.API.Enums;
-using VoiceChat.Codec;
 using UncomplicatedCustomItems.API;
-using SCP294.CustomItems;
+using Player = Exiled.Events.Handlers.Player;
+using Server = Exiled.Events.Handlers.Server;
 
 namespace SCP294
 {
@@ -19,7 +18,7 @@ namespace SCP294
     {
         public override string Name => "Ultimate294";
         public override string Author => "creepycats & jcosmick & ThunderMatt";
-        public override Version Version => new Version(1, 1, 1);
+        public override Version Version => new Version(1, 3, 0);
 
         public override PluginPriority Priority => PluginPriority.Highest;
 
@@ -31,6 +30,7 @@ namespace SCP294
         public List<string> PlayersNear294 { get; set; } = new List<string>();
         public Dictionary<ushort, DrinkInfo> CustomDrinkItems = new Dictionary<ushort, DrinkInfo>();
         public DrinkManager DrinkManager = new DrinkManager();
+        public RarityManager RarityManager = new RarityManager();
         public Dictionary<string, float> PlayerVoicePitch = new Dictionary<string, float>();
 
         private Harmony _harmony;
@@ -80,7 +80,7 @@ namespace SCP294
         private handlers.serverHandler ServerHandler;
         private handlers.playerHandler PlayerHandler;
 
-        public void RegisterEvents() 
+        public void RegisterEvents()
         {
             ServerHandler = new handlers.serverHandler();
             PlayerHandler = new handlers.playerHandler();

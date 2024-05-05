@@ -5,22 +5,15 @@ using Exiled.API.Extensions;
 using Exiled.API.Features;
 using Exiled.API.Features.Items;
 using Exiled.API.Features.Pickups;
-using Exiled.API.Features.Roles;
-using Exiled.Permissions.Extensions;
 using MapEditorReborn.API.Features.Objects;
-using MapEditorReborn.Commands.ModifyingCommands.Position;
-using MapEditorReborn.Commands.ModifyingCommands.Rotation;
 using MEC;
-using Mirror;
 using PlayerRoles;
 using RemoteAdmin;
-using SCP294;
 using SCP294.Classes;
 using SCP294.Types;
 using SCP294.Types.Config;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -83,7 +76,8 @@ namespace SCP294.Commands
                     response = "You aren't holding a coin to buy a drink with.";
                     return false;
                 }
-                if (arguments.Count > 0 && arguments.At(0).ToLower() == "player") {
+                if (arguments.Count > 0 && arguments.At(0).ToLower() == "player")
+                {
                     // Player Cup
                     // Try and Get player
                     Player targetPlayer = Player.Get(String.Join(" ", arguments.Skip(1).ToArray()));
@@ -156,7 +150,7 @@ namespace SCP294.Commands
                     }
                     response = "SCP-294 couldn't determine your drink, and refunded you your coin.";
                     return false;
-                } 
+                }
                 else if (arguments.Count > 0 && arguments.At(0).ToLower() == "playercum")
                 {
                     // Player Cup
@@ -214,7 +208,7 @@ namespace SCP294.Commands
                     response = "SCP-294 couldn't determine your drink, and refunded you your coin.";
                     return false;
                 }
-                else 
+                else
                 {
                     if (SCP294.Instance.Config.ForceRandom || arguments.At(0).ToLower() == "random")
                     {
@@ -225,7 +219,7 @@ namespace SCP294.Commands
                         {
                             System.Random random = new System.Random();
                             int randomNumber = random.Next(0, 101); //1-100
-                            Rarity rarity = SCP294.Instance.Config.RarityConfigs.GetRandomRarity(randomNumber);
+                            Rarity rarity = SCP294.Instance.RarityManager.GetRandomRarity(randomNumber);
                             arguments = new ArraySegment<string>(rarity.Drinks.GetRandomValue().Split());
                         }
                     }
@@ -235,12 +229,14 @@ namespace SCP294.Commands
                     {
                         foreach (string drinkName in customDrink.DrinkNames)
                         {
-                            if (drinkName.ToLower() == String.Join(" ", arguments.Where(s => !String.IsNullOrEmpty(s))).ToLower()) {
+                            if (drinkName.ToLower() == String.Join(" ", arguments.Where(s => !String.IsNullOrEmpty(s))).ToLower())
+                            {
                                 float failNumber = (float)rand.NextDouble();
                                 if (customDrink.BackfireChance > failNumber)
                                 {
                                     // BACKFIRED!!!
-                                    if (customDrink.ExplodeOnBackfire) {
+                                    if (customDrink.ExplodeOnBackfire)
+                                    {
                                         List<DrinkEffect> stealEffects = new List<DrinkEffect>() {
                                         new DrinkEffect ()
                                             {
@@ -280,7 +276,8 @@ namespace SCP294.Commands
                                         response = $"SCP-294 Started Dispensing a Drink of {drinkName}. {(SCP294.Instance.Config.ForceRandom ? "(Server Forced Random Drink)" : "")}";
                                         SCP294Object.SetSCP294Uses(scp294, SCP294.Instance.SCP294UsesLeft[scp294] - 1);
                                         return true;
-                                    } else
+                                    }
+                                    else
                                     {
                                         List<DrinkEffect> stealEffects = new List<DrinkEffect>() {
                                         new DrinkEffect ()
@@ -347,7 +344,8 @@ namespace SCP294.Commands
                                         SCP294Object.SetSCP294Uses(scp294, SCP294.Instance.SCP294UsesLeft[scp294] - 1);
                                         return true;
                                     }
-                                } else
+                                }
+                                else
                                 {
                                     // Found Drink
                                     player.RemoveItem(player.CurrentItem);
@@ -382,7 +380,8 @@ namespace SCP294.Commands
                                             grenade.FuseTime = 0.1f;
                                             grenade.SpawnActive(player.Position, player);
                                             player.Kill($"Ordered a {drinkName} from SCP-294");
-                                        } else
+                                        }
+                                        else
                                         {
                                             Item drinkItem = Item.Create(customDrink.AntiColaModel ? ItemType.AntiSCP207 : ItemType.SCP207);
                                             drinkItem.Scale = new Vector3(1f, 1f, 0.8f);

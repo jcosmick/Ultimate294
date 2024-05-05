@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SCP294.Classes
 {
@@ -11,8 +7,8 @@ namespace SCP294.Classes
         public Rarity()
         {
         }
-        public Rarity(string Name, float Percentage, HashSet<string> Drinks) 
-        { 
+        public Rarity(string Name, float Percentage, HashSet<string> Drinks)
+        {
             this.Name = Name;
             this.Percentage = Percentage;
             this.Drinks = Drinks;

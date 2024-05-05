@@ -10,7 +10,6 @@ using SCP294.Types;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using VoiceChat;
-using VoiceChat.Codec;
 using VoiceChat.Networking;
 
 namespace SCP294.Patches

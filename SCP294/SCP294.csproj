@@ -61,6 +61,7 @@
     <Compile Include="Classes\DrinkManager.cs" />
     <Compile Include="Classes\OpusComponent.cs" />
     <Compile Include="Classes\Rarity.cs" />
+    <Compile Include="Classes\RarityManager.cs" />
     <Compile Include="Types\Config\RarityConfig.cs" />
     <Compile Include="Classes\SCP294Object.cs" />
     <Compile Include="Classes\SoundHandler.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Types\DrinkInfo.cs" />
     <Compile Include="Models\DrinkSound.cs" />
     <Compile Include="Utils\DistanceUtils.cs" />
-    <Compile Include="Utils\RarityUtils.cs" />
     <Compile Include="Utils\RoomHandler.cs" />
     <Compile Include="Commands\SCP294Command.cs" />
   </ItemGroup>

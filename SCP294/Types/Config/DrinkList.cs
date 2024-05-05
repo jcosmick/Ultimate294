@@ -544,7 +544,7 @@ namespace SCP294.Types.Config
         DrinkMessage = "Ti senti più piccolo e più assetato di sangue",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.Zombie)
-        
+
       },
       new CustomDrink()
       {

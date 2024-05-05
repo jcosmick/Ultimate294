@@ -1,10 +1,6 @@
 ﻿
 using Exiled.API.Features;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SCP294.Utils
@@ -23,11 +19,11 @@ namespace SCP294.Utils
             {
                 if (player.IsAlive && player.Role != PlayerRoles.RoleTypeId.Tutorial && player.Role != PlayerRoles.RoleTypeId.Spectator)
                 {
-                    if(isInRange(center, player.Position, range)) 
+                    if (isInRange(center, player.Position, range))
                     {
                         playersInRange.Add(player);
                     }
-                    
+
                 }
             }
             Log.Debug(playersInRange.ToArray().ToString());

@@ -2,7 +2,6 @@
 using Exiled.API.Interfaces;
 using SCP294.Classes;
 using SCP294.Types;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -27,15 +26,17 @@ namespace SCP294.Config
         /// Configure the Spawning Locations of SCP-294
         /// </summary>
         [Description("Configure the Spawning Locations of SCP-294")]
-        public SpawningConfig SpawningLocations { get; set; } = new SpawningConfig() { 
+        public SpawningConfig SpawningLocations { get; set; } = new SpawningConfig()
+        {
             SpawnAmount = 1,
-            SpawnRooms = new Dictionary<RoomType, List<SpawnTransform>>() {
+            SpawnRooms = new Dictionary<RoomType, List<SpawnTransform>>()
+            {
                 [RoomType.EzUpstairsPcs] = new List<SpawnTransform>(){
                     new SpawnTransform() {
                         Position = new Vector3(-5.15f, 0f, 2f),
                         Rotation = new Vector3(0f, -90f, 0f),
                         Scale = Vector3.one
-                    } 
+                    }
                 },
                 [RoomType.EzPcs] = new List<SpawnTransform>(){
                     new SpawnTransform() {
@@ -103,13 +104,15 @@ namespace SCP294.Config
                 new Rarity(){
                     Name = "Common",
                     Percentage = 45f,
-                    Drinks = [ "Caffè", "Cocaina", "Omosessuale", "Red Bull", "Felicità", "Sborra", "Velocità", "Erba", "SCP-173", "SCP-999 (mostro degli abbracci)", "Anoressia", "Obesità", "Elio", "Zolfo", "Nanismo", "Gigantismo"]
+                    Drinks = [ "Caffè", "Cocaina", "Omosessuale", "Red Bull", "Felicità", "Sborra", "Velocità",
+                        "Erba", "SCP-173", "SCP-999 (mostro degli abbracci)", "Anoressia", "Obesità", "Elio", "Zolfo", "Nanismo", "Gigantismo"]
                 },
                 new Rarity()
                 {
                     Name = "Rare",
                     Percentage = 30f,
-                    Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",  "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo"]
+                    Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",
+                        "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo"]
                 },
                 new Rarity()
                 {
@@ -160,11 +163,11 @@ namespace SCP294.Config
         /// The maximum size a player can grow to from a drink.
         /// </summary>
         [Description("The maximum size a player can grow to from a drink.")]
-        public Vector3 MaxSizeFromDrink { get; set; } = new Vector3(1.3f,1.3f,1.3f);
+        public Vector3 MaxSizeFromDrink { get; set; } = new Vector3(1.3f, 1.3f, 1.3f);
         /// <summary>
         /// The minimum size a player can shrink to from a drink.
         /// </summary>
         [Description("The minimum size a player can shrink to from a drink.")]
-        public Vector3 MinSizeFromDrink { get; set; } = new Vector3(0.7f,0.7f,0.7f);
+        public Vector3 MinSizeFromDrink { get; set; } = new Vector3(0.7f, 0.7f, 0.7f);
     }
 }

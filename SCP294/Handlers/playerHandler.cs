@@ -2,8 +2,6 @@
 using Exiled.API.Enums;
 using Exiled.API.Extensions;
 using Exiled.API.Features;
-using Exiled.API.Features.Items;
-using Exiled.API.Features.Pickups;
 using Exiled.Events.EventArgs.Player;
 using Hazards;
 using MapEditorReborn.API.Features.Objects;
@@ -15,10 +13,7 @@ using RelativePositioning;
 using SCP294.Classes;
 using SCP294.Types;
 using SCP294.Types.Config;
-using SCP294.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace SCP294.handlers
@@ -30,7 +25,8 @@ namespace SCP294.handlers
 
         }
 
-        public void ChangingItem(ChangingItemEventArgs args) {
+        public void ChangingItem(ChangingItemEventArgs args)
+        {
             if (args.Player == null) return;
             if (args.Item == null) return;
             if (args.Player.IsNPC) return;
@@ -40,7 +36,7 @@ namespace SCP294.handlers
                 string hint = $"You pulled out the Drink of {drinkInfo.DrinkName}";
                 if (SCP294.Instance.Config.EnableRarity)
                 {
-                    hint += $", that is {RarityUtils.GetRarityFromDrink(drinkInfo.DrinkName).Name}";
+                    hint += $", that is {SCP294.Instance.RarityManager.GetRarityFromDrink(drinkInfo.DrinkName).Name}";
                 }
                 args.Player.ShowHint(hint, 3);
             }
@@ -56,7 +52,7 @@ namespace SCP294.handlers
             // Only Continue if Player is close enough to use 294
             if (!SCP294Object.CanPlayerUse294(player))
             {
-                Log.Info("Player: "+player.DisplayNickname+ " flipped a coin but is not near a SCP294 vending machine");
+                Log.Info("Player: " + player.DisplayNickname + " flipped a coin but is not near a SCP294 vending machine");
                 return;
             }
             SchematicObject scp294 = SCP294Object.GetClosest294(player);
@@ -78,12 +74,12 @@ namespace SCP294.handlers
             {
                 System.Random random = new System.Random();
                 int randomNumber = random.Next(0, 101); //1-100
-                Rarity rarity = SCP294.Instance.Config.RarityConfigs.GetRandomRarity(randomNumber);
+                Rarity rarity = SCP294.Instance.RarityManager.GetRandomRarity(randomNumber);
                 arguments = new ArraySegment<string>(rarity.Drinks.GetRandomValue().Split());
             }
-            
+
             SCP294Object.dispenseDrink(arguments, rand, scp294, player);
-    }
+        }
 
         public void UsedItem(UsedItemEventArgs args)
         {
@@ -117,7 +113,8 @@ namespace SCP294.handlers
                 if (drinkInfo.KillPlayer)
                 {
                     DrinkCallbacks.DrinkKill(args.Player, drinkInfo);
-                } else
+                }
+                else
                 {
                     args.Player.Heal(drinkInfo.HealAmount);
                     // Give player effects from drink
@@ -142,7 +139,7 @@ namespace SCP294.handlers
                         }
                     }
                 }
-                 
+
                 // Spawn Tantrum when player Drink Funny
                 if (drinkInfo.Tantrum)
                 {

@@ -5,9 +5,6 @@ using SCP294.Types.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace SCP294.Types
 {
@@ -63,7 +60,8 @@ namespace SCP294.Types
         /// </summary>
         /// <param name="Base"></param>
         /// <returns></returns>
-        public static bool IsCustomDrink(ItemBase itembase) {
+        public static bool IsCustomDrink(ItemBase itembase)
+        {
             return SCP294.Instance.CustomDrinkItems.Keys.Contains(itembase.ItemSerial);
         }
     }

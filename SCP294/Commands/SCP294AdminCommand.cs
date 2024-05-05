@@ -1,19 +1,17 @@
 ﻿using CommandSystem;
 using CustomPlayerEffects;
+using Exiled.API.Enums;
 using Exiled.API.Features;
-using Exiled.CreditTags.Features;
+using Exiled.API.Features.Items;
 using Exiled.Permissions.Extensions;
-using MEC;
 using RemoteAdmin;
 using SCP294.Classes;
-using SCP294.Types.Config;
 using SCP294.Types;
+using SCP294.Types.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Exiled.API.Features.Items;
-using Exiled.API.Enums;
 
 namespace SCP294.Commands
 {
@@ -22,7 +20,7 @@ namespace SCP294.Commands
     {
         public string Command { get; } = "scp294";
 
-        public string[] Aliases { get; } = {  };
+        public string[] Aliases { get; } = { };
 
         public string Description { get; } = "SCP294 Admin Command Base";
 
@@ -51,7 +49,7 @@ namespace SCP294.Commands
 
             if (arguments.At(0) == "create" || arguments.At(0) == "spawn")
             {
-                SCP294Object.CreateSCP294(player.Position - new Vector3(0,1,0), Quaternion.Euler(new Vector3(0, player.Rotation.y + 180, 0)), Vector3.one);
+                SCP294Object.CreateSCP294(player.Position - new Vector3(0, 1, 0), Quaternion.Euler(new Vector3(0, player.Rotation.y + 180, 0)), Vector3.one);
                 response = $"Created a SCP-294 at your Position and Rotation";
                 return true;
             }
@@ -66,10 +64,11 @@ namespace SCP294.Commands
                 int useAmount = 0;
                 if (int.TryParse(arguments.At(1), out useAmount))
                 {
-                    SCP294Object.SetSCP294Uses(SCP294Object.GetClosest294(player),useAmount);
+                    SCP294Object.SetSCP294Uses(SCP294Object.GetClosest294(player), useAmount);
                     response = $"Set the nearest SCP-294 instance's uses to {useAmount}";
                     return true;
-                } else
+                }
+                else
                 {
                     response = $"Parameter is not of type Int";
                     return false;
