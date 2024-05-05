@@ -54,12 +54,12 @@ namespace SCP294.CustomItems
             ScpDamageMultiplier = 1,
         };
 
-        protected void OnExploding(ExplodingGrenadeEventArgs ev, Player player)
+        public static void OnExploding(ExplodingGrenadeEventArgs ev)
         {
             if (ev.Projectile.IsActive)
             {
                 Log.Debug("xd");
-                SoundHandler.PlayAudio("pirots.ogg", 50, false, "troll", player.Position, 3f, player);
+                SoundHandler.PlayAudio("pirots.ogg", 50, false, "troll", ev.Position, 3f);
             }
                 
         }

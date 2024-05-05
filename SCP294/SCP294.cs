@@ -3,6 +3,7 @@ using Exiled.API.Features;
 using HarmonyLib;
 using MapEditorReborn.API.Features.Objects;
 using MEC;
+using PluginAPI.Events;
 using SCP294.Classes;
 using SCP294.CustomItems;
 using SCP294.Types;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using UncomplicatedCustomItems.API;
 using Player = Exiled.Events.Handlers.Player;
 using Server = Exiled.Events.Handlers.Server;
+using Map = Exiled.Events.Handlers.Map;
 
 namespace SCP294
 {
@@ -91,6 +93,7 @@ namespace SCP294
             Player.UsedItem += PlayerHandler.UsedItem;
             Player.Joined += PlayerHandler.Joined;
             Player.FlippingCoin += PlayerHandler.OnCoinFlip;
+            Map.ExplodingGrenade += FakeGR.OnExploding;
         }
         public void UnregisterEvents()
         {
@@ -100,6 +103,7 @@ namespace SCP294
             Player.UsedItem -= PlayerHandler.UsedItem;
             Player.Joined -= PlayerHandler.Joined;
             Player.FlippingCoin -= PlayerHandler.OnCoinFlip;
+
         }
     }
 }

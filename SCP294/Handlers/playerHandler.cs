@@ -14,6 +14,7 @@ using SCP294.Classes;
 using SCP294.Types;
 using SCP294.Types.Config;
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace SCP294.handlers
@@ -23,6 +24,25 @@ namespace SCP294.handlers
         public void Joined(JoinedEventArgs args)
         {
 
+        }
+
+        static string ExtractColor(string text)
+        {
+            // Define a regular expression pattern to match the color
+            string pattern = @"<color=(#[A-Fa-f0-9]{6})>";
+
+            // Search for the color pattern in the text
+            Match match = Regex.Match(text, pattern);
+
+            // If a match is found, return the color
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void ChangingItem(ChangingItemEventArgs args)
