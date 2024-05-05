@@ -167,7 +167,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UncomplicatedCustomItems, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\UncomplicatedCustomItems.dll</HintPath>
+      <HintPath>..\packages\lib\UncomplicatedCustomItems.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>..\..\..\..\Downloads\Master\Unity.Burst.dll</HintPath>

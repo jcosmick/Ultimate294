@@ -1,4 +1,5 @@
-﻿using MEC;
+﻿using Exiled.API.Features;
+using MEC;
 using SCP294.Types.Config;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,13 @@ namespace SCP294.Classes
         {
             SCP294.Instance.RarityManager.Config = SCP294.Instance.Config.RarityConfigs;
             SCP294.Instance.RarityManager.NormalizeRarities(100);
+            if(SCP294.Instance.Config.Debug)
+            {
+                foreach (var rarity in SCP294.Instance.Config.RarityConfigs.rarities)
+                {
+                    Log.Debug("Rarity: " + rarity.Name + "\nPercentage: " + rarity.Percentage);
+                }
+            }
             LoadedDrinks = LoadedDrinks.Concat(DrinkList.DefaultDrinks).ToList();
             if (SCP294.Instance.Config.EnableCommunityDrinks) LoadedDrinks = LoadedDrinks.Concat(DrinkList.CommunityDrinks).ToList();
         }

@@ -11,7 +11,7 @@ namespace SCP294.Classes
 
         public void NormalizeRarities(float targetSum)
         {
-            float sum = Config.rarities.Sum(obj => obj.Percentage);
+            float sum = SCP294.Instance.Config.RarityConfigs.rarities.Sum(obj => obj.Percentage);
 
             float ratio = targetSum / sum;
             foreach (var rarity in Config.rarities)
@@ -23,11 +23,12 @@ namespace SCP294.Classes
         public Rarity GetRandomRarity(float randomNumber)
         {
             float sum = 0;
+            Log.Debug("Random number for rarity pick: " + randomNumber);
             foreach (var rarity in Config.rarities)
             {
                 if (randomNumber > sum && randomNumber <= rarity.Percentage + sum)
                 {
-                    Log.Debug("Random rarity: " + rarity.Name + " with random number: " + randomNumber);
+                    Log.Debug("Random rarity: " + rarity.Name);
                     return rarity;
                 }
                 sum += rarity.Percentage;
