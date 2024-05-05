@@ -1,6 +1,7 @@
 ﻿using CommandSystem;
 using CustomPlayerEffects;
 using Exiled.API.Enums;
+using Exiled.API.Extensions;
 using Exiled.API.Features;
 using Exiled.API.Features.Items;
 using Exiled.API.Features.Pickups;
@@ -217,7 +218,16 @@ namespace SCP294.Commands
                 {
                     if (SCP294.Instance.Config.ForceRandom || arguments.At(0).ToLower() == "random")
                     {
-                        arguments = new ArraySegment<string>(SCP294.Instance.DrinkManager.LoadedDrinks.RandomItem<CustomDrink>().DrinkNames.RandomItem<string>().Split());
+                        arguments = new ArraySegment<string>();
+                        if (!SCP294.Instance.Config.EnableRarity)
+                            arguments = new ArraySegment<string>(SCP294.Instance.DrinkManager.LoadedDrinks.RandomItem<CustomDrink>().DrinkNames.RandomItem<string>().Split());
+                        else
+                        {
+                            System.Random random = new System.Random();
+                            int randomNumber = random.Next(0, 101); //1-100
+                            Rarity rarity = SCP294.Instance.Config.RarityConfigs.GetRandomRarity(randomNumber);
+                            arguments = new ArraySegment<string>(rarity.Drinks.GetRandomValue().Split());
+                        }
                     }
 
                     // Other Drinks
