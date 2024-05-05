@@ -1,4 +1,5 @@
-﻿using SCP294.Types.Config;
+﻿using Exiled.API.Features;
+using SCP294.Types.Config;
 using System;
 using System.Linq;
 
@@ -19,13 +20,16 @@ namespace SCP294.Classes
             }
         }
 
-        public Rarity GetRandomRarity(int randomNumber)
+        public Rarity GetRandomRarity(float randomNumber)
         {
             float sum = 0;
             foreach (var rarity in Config.rarities)
             {
                 if (randomNumber > sum && randomNumber <= rarity.Percentage + sum)
+                {
+                    Log.Debug("Random rarity: " + rarity.Name + " with random number: " + randomNumber);
                     return rarity;
+                }
                 sum += rarity.Percentage;
             }
             throw new InvalidOperationException("No Rarity found. Check rarity values in configuration file.");
