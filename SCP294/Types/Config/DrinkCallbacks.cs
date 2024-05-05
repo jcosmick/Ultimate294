@@ -314,6 +314,9 @@ namespace SCP294.Types.Config
             player.AddAmmo(AmmoType.Ammo44Cal, (ushort)player.GetAmmoLimit(AmmoType.Ammo44Cal));
             player.AddAmmo(AmmoType.Ammo12Gauge, (ushort)player.GetAmmoLimit(AmmoType.Ammo12Gauge));
         }
-        
+        public static void Troll(Player player)
+        {
+            SummonedCustomItem FakeGR = SummonedCustomItem.Summon(new FakeGR(), player);
+        }
     }
 }

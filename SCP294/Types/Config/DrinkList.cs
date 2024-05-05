@@ -649,6 +649,18 @@ namespace SCP294.Types.Config
         DrinkMessage = "<color=#C91010> MAX AMMO!</color>",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.Maxammo)
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Troll"
+        },
+        AntiColaModel = true,
+        BackfireChance = 0.0f,
+        DrinkMessage = "<color=#7703FC> Hai ottenuto 2 oggetti troll nel tuo inventario!</color>",
+        DrinkEffects = new List<DrinkEffect>(),
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Troll)
       }
     };
     }

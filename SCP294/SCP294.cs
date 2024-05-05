@@ -47,7 +47,7 @@ namespace SCP294
                 Log.Info("Registering events...");
             RegisterEvents();
             Manager.Register(new Revolver());
-
+            Manager.Register(new FakeGR());
             DrinkManager.LoadBaseDrinks();
 
             hintCoroutine = Timing.RunCoroutine(SCP294Object.Handle294Hint());

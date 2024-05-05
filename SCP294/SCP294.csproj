@@ -62,6 +62,7 @@
     <Compile Include="Classes\OpusComponent.cs" />
     <Compile Include="Classes\Rarity.cs" />
     <Compile Include="Classes\RarityManager.cs" />
+    <Compile Include="CustomItems\FakeGR.cs" />
     <Compile Include="Types\Config\RarityConfig.cs" />
     <Compile Include="Classes\SCP294Object.cs" />
     <Compile Include="Classes\SoundHandler.cs" />
@@ -164,8 +165,9 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="UncomplicatedCustomItems">
-      <HintPath>..\packages\lib\UncomplicatedCustomItems.dll</HintPath>
+    <Reference Include="UncomplicatedCustomItems, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\UncomplicatedCustomItems.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>..\..\..\..\Downloads\Master\Unity.Burst.dll</HintPath>

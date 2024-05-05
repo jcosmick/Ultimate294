@@ -73,22 +73,22 @@ namespace SCP294.Config
         ///  Should players be forced to get a random drink? (Player drinks will still be requestable)
         /// </summary>
         [Description("Should players be forced to get a random drink? (Player drinks will still be requestable)")]
-        public bool ForceRandom { get; set; } = false;
+        public bool ForceRandom { get; set; } = true;
         /// <summary>
         ///  Enable using machine with random drink by flipping the coin
         /// </summary>
         [Description("Enable using machine with random drink by flipping the coin")]
-        public bool EnableUsageByCoinFlip { get; set; } = false;
+        public bool EnableUsageByCoinFlip { get; set; } = true;
         /// <summary>
         ///  Enable using machine with random drink by flipping the coin
         /// </summary>
         [Description("Spawn amount is ignored - Scp294 will be in every Spawning Locations set")]
-        public bool ForceScp294SpawningLocations { get; set; } = false;
+        public bool ForceScp294SpawningLocations { get; set; } = true;
         /// <summary>
         ///  How close to the machine does the player have to be?
         /// </summary>
         [Description("How close to the machine does the player have to be?")]
-        public float UseDistance { get; set; } = 2.5f;
+        public float UseDistance { get; set; } = 3f;
         /// <summary>
         /// use rarity for drinks othrwise every drink has the same drop rate
         /// </summary>
@@ -102,27 +102,27 @@ namespace SCP294.Config
             rarities = new List<Rarity>()
             {
                 new Rarity(){
-                    Name = "<color=#03ECFC>Common</color>",
+                    Name = "<color=#03ECFC><b><i>Common</i></b></color>",
                     Percentage = 45f,
                     Drinks = [ "Caffè", "Cocaina", "Omosessuale", "Red Bull", "Felicità", "Sborra", "Velocità",
                         "Erba", "SCP-173", "SCP-999 (mostro degli abbracci)", "Anoressia", "Obesità", "Elio", "Zolfo", "Nanismo", "Gigantismo"]
                 },
                 new Rarity()
                 {
-                    Name = "<color=#03FC0B>Rare</color>",
+                    Name = "<color=#03FC0B><b><i>Rare</i></b></color>",
                     Percentage = 30f,
                     Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",
                         "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo", "Juggernog"]
                 },
                 new Rarity()
                 {
-                    Name = "<color=#AD03FC>Epic</color>",
+                    Name = "<color=#AD03FC><b><i>Epic</i></b></color>",
                     Percentage = 15f,
-                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento"]
+                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento", "Troll"]
                 },
                 new Rarity()
                 {
-                    Name = "<color=#FCBA03>Legendary</color>",
+                    Name = "<color=#FCBA03><b><i>Legendary</i></b></color>",
                     Percentage = 9f,
                     Drinks = ["Pirots", "Zombie nano", "DeadEye", "Verstappen"]
                 },
@@ -148,7 +148,7 @@ namespace SCP294.Config
         /// Cooldown after a player uses the machine. Starts exactly as the coin is inserted
         /// </summary>
         [Description("Cooldown after a player uses the machine. Starts exactly as the coin is inserted")]
-        public float CooldownTime { get; set; } = 10f;
+        public float CooldownTime { get; set; } = 8f;
         /// <summary>
         /// Enable to use the Community Made Drinks
         /// </summary>
@@ -158,7 +158,7 @@ namespace SCP294.Config
         /// The maximum uses of a SCP-294 machine before it deactivates. Set to -1 for infinite uses
         /// </summary>
         [Description("The maximum uses of a SCP-294 machine before it deactivates. Set to -1 for infinite uses")]
-        public int MaxUsesPerMachine { get; set; } = 3;
+        public int MaxUsesPerMachine { get; set; } = -1;
         /// <summary>
         /// The maximum size a player can grow to from a drink.
         /// </summary>
