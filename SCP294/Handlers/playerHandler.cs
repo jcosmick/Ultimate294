@@ -37,7 +37,7 @@ namespace SCP294.handlers
 
             if (SCP294.Instance.CustomDrinkItems.TryGetValue(args.Item.Serial, out DrinkInfo drinkInfo))
             {
-                args.Player.ShowHint($"You pulled out the Drink of {drinkInfo.DrinkName}, that is {RarityUtils.GetRarityFromDrink(drinkInfo.DrinkName)}", 3);
+                args.Player.ShowHint($"You pulled out the Drink of {drinkInfo.DrinkName}, that is {RarityUtils.GetRarityFromDrink(drinkInfo.DrinkName).Name}", 3);
             }
         }
 

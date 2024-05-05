@@ -12,21 +12,13 @@ namespace SCP294.Utils
     {
         public static Rarity GetRarityFromDrink(string drinkName)
         {
-            foreach (var rarity in SCP294.Instance.Config.RarityConfigs.rarities)
-            {
-                if (rarity.Drinks.Contains(drinkName))
-                    return rarity;
-            }
-            return null;
+            return SCP294.Instance.Config.RarityConfigs.rarities.FirstOrDefault(rarity => rarity.Drinks.Contains(drinkName));
         }
+
         public static Rarity GetRarityFromDrink(CustomDrink drink)
         {
-            foreach (var rarity in SCP294.Instance.Config.RarityConfigs.rarities)
-            {
-                if (rarity.Drinks.Intersect(drink.DrinkNames).Any())
-                    return rarity;
-            }
-            return null;
+            return SCP294.Instance.Config.RarityConfigs.rarities.FirstOrDefault(rarity => rarity.Drinks.Intersect(drink.DrinkNames).Any());
         }
+
     }
 }
