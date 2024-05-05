@@ -63,7 +63,6 @@
     <Compile Include="Classes\Rarity.cs" />
     <Compile Include="Classes\RarityManager.cs" />
     <Compile Include="CustomItems\FakeGR.cs" />
-    <Compile Include="Handlers\mapHandler.cs" />
     <Compile Include="Types\Config\RarityConfig.cs" />
     <Compile Include="Classes\SCP294Object.cs" />
     <Compile Include="Classes\SoundHandler.cs" />
