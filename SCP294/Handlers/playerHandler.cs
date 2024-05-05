@@ -36,7 +36,12 @@ namespace SCP294.handlers
                 string hint = $"You pulled out the Drink of {drinkInfo.DrinkName}";
                 if (SCP294.Instance.Config.EnableRarity)
                 {
-                    hint += $", that is {SCP294.Instance.RarityManager.GetRarityFromDrink(drinkInfo.DrinkName).Name}";
+                    Rarity drinkRarity = SCP294.Instance.RarityManager.GetRarityFromDrink(drinkInfo.DrinkName);
+                    if(drinkRarity != null) //Could be null if it's a drink of another player or drink is not in a rarity for test reason
+                    {
+                        hint += $", that is {SCP294.Instance.RarityManager.GetRarityFromDrink(drinkInfo.DrinkName).Name}";
+                    }
+                    
                 }
                 args.Player.ShowHint(hint, 3);
             }
@@ -73,7 +78,7 @@ namespace SCP294.handlers
             else
             {
                 System.Random random = new System.Random();
-                int randomNumber = random.Next(0, 101); //1-100
+                float randomNumber = random.Next(0, 101); //1-100
                 Rarity rarity = SCP294.Instance.RarityManager.GetRandomRarity(randomNumber);
                 arguments = new ArraySegment<string>(rarity.Drinks.GetRandomValue().Split());
             }
