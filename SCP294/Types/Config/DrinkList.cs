@@ -275,7 +275,7 @@ namespace SCP294.Types.Config
           "Caramella rosa"
         },
         AntiColaModel = true,
-        BackfireChance = 0.25f,
+        BackfireChance = 0.0f,
         ExplodeOnBackfire = true,
         DrinkMessage = "Ha un forte sapore di fragola, ti fa male la pancia...",
         DrinkEffects = new List<DrinkEffect>()
@@ -378,7 +378,7 @@ namespace SCP294.Types.Config
         HealAmount = 100f,
         HealStatusEffects = true,
         AntiColaModel = true,
-        BackfireChance = 0.25f,
+        BackfireChance = 0.0f,
         DrinkMessage = "Ha il sapore di uno sciroppo per la tosse. Ti senti già meglio stranamente.",
         DrinkEffects = new List<DrinkEffect>()
       },
@@ -411,7 +411,7 @@ namespace SCP294.Types.Config
           "SCP-018 (pallina rossa)"
         },
         AntiColaModel = true,
-        BackfireChance = 0.99f,
+        BackfireChance = 0.0f,
         DrinkMessage = "Subito, come hai bevuto il drink, varie SCP-018 escono dalla tua bocca!!!",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.BallSpam)
@@ -634,7 +634,7 @@ namespace SCP294.Types.Config
         },
         AntiColaModel = false,
         BackfireChance = 0.0f,
-        DrinkMessage = "<color=#C91010> you need to feel big and strong</color>\n<color=#FFFFFF>reach for Juggernog tonight!</color>",
+        DrinkMessage = "",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.Juggernog)
       },

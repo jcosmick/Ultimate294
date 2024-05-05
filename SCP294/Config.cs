@@ -102,28 +102,28 @@ namespace SCP294.Config
             rarities = new List<Rarity>()
             {
                 new Rarity(){
-                    Name = "Common",
+                    Name = "<color=#03ECFC>Common</color>",
                     Percentage = 45f,
                     Drinks = [ "Caffè", "Cocaina", "Omosessuale", "Red Bull", "Felicità", "Sborra", "Velocità",
                         "Erba", "SCP-173", "SCP-999 (mostro degli abbracci)", "Anoressia", "Obesità", "Elio", "Zolfo", "Nanismo", "Gigantismo"]
                 },
                 new Rarity()
                 {
-                    Name = "Rare",
+                    Name = "<color=#03FC0B>Rare</color>",
                     Percentage = 30f,
                     Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",
-                        "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo"]
+                        "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo", "Juggernog"]
                 },
                 new Rarity()
                 {
-                    Name = "Epic",
+                    Name = "<color=#AD03FC>Epic</color>",
                     Percentage = 15f,
-                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento", "Juggernog"]
+                    Drinks = ["SCP-018 (pallina rossa)", "Caramella rosa", "Flashbang", "Tradimento"]
                 },
                 new Rarity()
                 {
-                    Name = "Legendary",
-                    Percentage = 10f,
+                    Name = "<color=#FCBA03>Legendary</color>",
+                    Percentage = 9f,
                     Drinks = ["Pirots", "Zombie nano", "DeadEye", "Verstappen"]
                 },
                 new Rarity()
