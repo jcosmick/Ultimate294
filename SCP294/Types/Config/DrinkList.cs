@@ -164,7 +164,10 @@ namespace SCP294.Types.Config
       },
       new CustomDrink()
       {
-        DrinkNames = new List<string>() { "Estus" },
+        DrinkNames = new List<string>()
+        {
+          "Estus" 
+        },
         HealAmount = 100f,
         HealStatusEffects = true,
         AntiColaModel = false,
@@ -562,29 +565,29 @@ namespace SCP294.Types.Config
       {
         DrinkNames = new List<string>()
         {
-          "SCP-106 (uomo nero)"
+          "Sunshine"
         },
         AntiColaModel = false,
         BackfireChance = 0.0f,
-        DrinkMessage = "per 15 secondi sarai nascosto nella dimensione dell'uomo nero \n non provare a scappare",
+        DrinkMessage = "",
         DrinkEffects = new List<DrinkEffect>()
         {
           new DrinkEffect()
           {
-            EffectType = EffectType.SinkHole,
-            EffectAmount = (byte) 255,
+            EffectType = EffectType.Flashed,
+            EffectAmount = (byte) 1,
             ShouldAddIfPresent = true,
-            Time = 15f
+            Time = 20f
           },
           new DrinkEffect()
           {
-            EffectType = EffectType.Stained,
-            EffectAmount = (byte) 255,
+            EffectType = EffectType.Ensnared,
+            EffectAmount = (byte) 1,
             ShouldAddIfPresent = true,
-            Time = 15f
+            Time = 20f
           }
         },
-        DrinkCallback = new Action<Player>(DrinkCallbacks.uomonero)
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Sunshine)
       },
       new CustomDrink()
       {

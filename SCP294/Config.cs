@@ -112,7 +112,7 @@ namespace SCP294.Config
                     Name = "<color=#03FC0B><b><i>Rare</i></b></color>",
                     Percentage = 30f,
                     Drinks = ["SCP-207 (coca-cola)",  "anti-SCP-207 (pepsi)", "SCP-268 (invisibilità)", "SCP-500 (panacea)",
-                        "Enderman", "SCP-106 (uomo nero)", "Coraggio", "Max ammo", "Juggernog"]
+                        "Enderman", "Sunshine", "Coraggio", "Max ammo", "Juggernog"]
                 },
                 new Rarity()
                 {

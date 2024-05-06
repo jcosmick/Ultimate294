@@ -94,6 +94,7 @@ namespace SCP294
             Player.Joined += PlayerHandler.Joined;
             Player.FlippingCoin += PlayerHandler.OnCoinFlip;
             Map.ExplodingGrenade += FakeGR.OnExploding;
+            Map.ExplodingGrenade += ProGR.OnExploding;
         }
         public void UnregisterEvents()
         {
@@ -103,7 +104,8 @@ namespace SCP294
             Player.UsedItem -= PlayerHandler.UsedItem;
             Player.Joined -= PlayerHandler.Joined;
             Player.FlippingCoin -= PlayerHandler.OnCoinFlip;
-
+            Map.ExplodingGrenade += FakeGR.OnExploding;
+            Map.ExplodingGrenade += ProGR.OnExploding;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exiled.Events.EventArgs.Map;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +9,15 @@ using UncomplicatedCustomItems.Elements;
 using UncomplicatedCustomItems.Interfaces.SpecificData;
 using UncomplicatedCustomItems.Interfaces;
 using UnityEngine;
-using Exiled.Events.EventArgs.Player;
 using UncomplicatedCustomItems.API.Features;
-using UncomplicatedCustomItems.API;
-using Exiled.Events.EventArgs.Map;
-using Exiled.CustomItems.API.Features;
-using SCP294.handlers;
-using Exiled.API.Enums;
-using Exiled.API.Features.Components;
-using Exiled.API.Features.Pickups.Projectiles;
-using PluginAPI.Core;
 
 namespace SCP294.CustomItems
 {
-    public class FakeGR : ICustomItem
+    public class ProGR : ICustomItem
     {
-        public uint Id { get; set; } = 37;
+        public uint Id { get; set; } = 38;
 
-        public string Name { get; set; } = "Una granata finta";
+        public string Name { get; set; } = "Una granata lenta ma letale";
 
         public string Description { get; set; } = "";
 
@@ -48,19 +40,19 @@ namespace SCP294.CustomItems
             BurnDuration = 0,
             ConcussDuration = 0,
             PinPullTime = 0.1f,
-            FuseTime = 2.5f,
-            MaxRadius = 0,
+            FuseTime = 6,
+            MaxRadius = 22,
             Repickable = false,
-            ScpDamageMultiplier = 1,
+            ScpDamageMultiplier = 1.5f,
         };
 
         public static void OnExploding(ExplodingGrenadeEventArgs ev)
         {
-            if (ev.Projectile.FuseTime == 2.5)
+            if (ev.Projectile.FuseTime == 6)
             {
-                SoundHandler.PlayAudio("troll.ogg", 50, false, "troll", ev.Position, 4f);
+                SoundHandler.PlayAudio("kaboom.ogg", 50, false, "kaboom", ev.Position, 3f);
             }
-                
+
         }
 
     }
