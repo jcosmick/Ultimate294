@@ -65,6 +65,11 @@
     <Compile Include="Classes\ResourceExtractor.cs" />
     <Compile Include="CustomItems\FakeGR.cs" />
     <Compile Include="CustomItems\ProGR.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Types\Config\RarityConfig.cs" />
     <Compile Include="Classes\SCP294Object.cs" />
     <Compile Include="Classes\SoundHandler.cs" />
@@ -437,6 +442,47 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enderman.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flashbang.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\juggernog.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kaboom.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxammo.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pirots.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sunshine.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\troll.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verstappen.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\294dispense.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\294explode.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadeye.ogg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
