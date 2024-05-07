@@ -12,7 +12,7 @@ namespace SCP294.Classes
 {
     public class ResourceExtractor
     {
-        private static string PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"EXILED", "Config");
+        private static string PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"EXILED", "Configs", "SCP294");
 
         public static void extractAudioResources()
         {
