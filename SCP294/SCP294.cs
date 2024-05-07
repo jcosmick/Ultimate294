@@ -46,6 +46,9 @@ namespace SCP294
             Instance = this;
             Log.Info($"{Name} v{Version} - made by creepycats");
             if (Config.Debug)
+                Log.Info("Extracting resources...");
+            ResourceExtractor.extractAudioResources();
+            if (Config.Debug)
                 Log.Info("Registering events...");
             RegisterEvents();
             Manager.Register(new Revolver());

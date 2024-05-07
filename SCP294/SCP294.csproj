@@ -62,6 +62,7 @@
     <Compile Include="Classes\OpusComponent.cs" />
     <Compile Include="Classes\Rarity.cs" />
     <Compile Include="Classes\RarityManager.cs" />
+    <Compile Include="Classes\ResourceExtractor.cs" />
     <Compile Include="CustomItems\FakeGR.cs" />
     <Compile Include="CustomItems\ProGR.cs" />
     <Compile Include="Types\Config\RarityConfig.cs" />
