@@ -1,4 +1,5 @@
-﻿using CustomPlayerEffects;
+﻿using CommandSystem.Commands.Console;
+using CustomPlayerEffects;
 using Exiled.API.Enums;
 using Exiled.API.Extensions;
 using Exiled.API.Features;
@@ -7,6 +8,7 @@ using Exiled.API.Features.Pickups;
 using Exiled.API.Features.Pickups.Projectiles;
 using MEC;
 using PlayerRoles;
+using PluginAPI.Events;
 using SCP294.CustomItems;
 using SCP294.Utils;
 using System.Collections.Generic;
@@ -325,5 +327,21 @@ namespace SCP294.Types.Config
             SummonedCustomItem FakeGR = SummonedCustomItem.Summon(new FakeGR(), player);
             SummonedCustomItem ProGR = SummonedCustomItem.Summon(new ProGR(), player);
         }
+        public static void Nuke(Player player)
+        {
+                Warhead.DetonationTimer = 30;
+                Warhead.Start();
+                Warhead.IsLocked = true;
+        }
+        //public static void Box(Player player)
+        //{
+        //   SoundHandler.PlayAudio("box.ogg", 50, false, "Mistery Box", player.Position, 12f, player);
+        //   Timing.CallDelayed(4f, () =>
+        //    {
+         //player.AddItem(Firearm.List.GetRandomValue());
+        //    });
+
+        }
+
     }
 }

@@ -484,5 +484,8 @@
   <ItemGroup>
     <None Include="Resources\deadeye.ogg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box.ogg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

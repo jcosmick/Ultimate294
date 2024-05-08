@@ -130,7 +130,7 @@ namespace SCP294.Config
                 {
                     Name = "???",
                     Percentage = 1f,
-                    Drinks = ["Anti-materia"]
+                    Drinks = ["Anti-materia", "Warhead"]
                 }
             }
         };

@@ -36,7 +36,7 @@ namespace SCP294.Types.Config
         {
           "anti-SCP-207 (pepsi)"
         },
-        AntiColaModel = true,
+        AntiColaModel = false,
         BackfireChance = 0.0f,
         DrinkMessage = "è estremamente calda",
         DrinkEffects = new List<DrinkEffect>()
@@ -56,7 +56,7 @@ namespace SCP294.Types.Config
         {
           "Anti-materia"
         },
-        AntiColaModel = false,
+        AntiColaModel = true,
         Explode = true,
         BackfireChance = 0.0f,
         DrinkMessage = "BOOM BOOM!!!",
@@ -68,7 +68,7 @@ namespace SCP294.Types.Config
         {
           "Cocaina"
         },
-        AntiColaModel = true,
+        AntiColaModel = false,
         BackfireChance = 0.0f,
         DrinkMessage = "Ti senti strano, ma pieno di energie.",
         DrinkEffects = new List<DrinkEffect>()
@@ -380,7 +380,7 @@ namespace SCP294.Types.Config
         },
         HealAmount = 100f,
         HealStatusEffects = true,
-        AntiColaModel = true,
+        AntiColaModel = false,
         BackfireChance = 0.0f,
         DrinkMessage = "Ha il sapore di uno sciroppo per la tosse. Ti senti già meglio stranamente.",
         DrinkEffects = new List<DrinkEffect>()
@@ -403,7 +403,7 @@ namespace SCP294.Types.Config
             EffectType = (EffectType) 15,
             EffectAmount = (byte) 1,
             ShouldAddIfPresent = true,
-            Time = 45f
+            Time = 15f
           },
         }
       },
@@ -506,7 +506,7 @@ namespace SCP294.Types.Config
         {
           "Flashbang"
         },
-        AntiColaModel = false,
+        AntiColaModel = true,
         BackfireChance = 0.0f,
         DrinkMessage = "now do the flashbang dance",
         DrinkEffects = new List<DrinkEffect>(),
@@ -530,7 +530,7 @@ namespace SCP294.Types.Config
         {
           "Elio"
         },
-        AntiColaModel = true,
+        AntiColaModel = false,
         BackfireChance = 0.0f,
         DrinkMessage = "(La tua voce è a tono alto per 1.5 minuti)",
         DrinkEffects = new List<DrinkEffect>(),
@@ -542,7 +542,7 @@ namespace SCP294.Types.Config
         {
           "Zombie nano"
         },
-        AntiColaModel = false,
+        AntiColaModel = true,
         BackfireChance = 0.0f,
         DrinkMessage = "Ti senti più piccolo e più assetato di sangue",
         DrinkEffects = new List<DrinkEffect>(),
@@ -595,7 +595,7 @@ namespace SCP294.Types.Config
         {
           "DeadEye"
         },
-        AntiColaModel = false,
+        AntiColaModel = true,
         BackfireChance = 0.0f,
         DrinkMessage = "I guess we got to pay for our sins",
         DrinkEffects = new List<DrinkEffect>(),
@@ -607,7 +607,7 @@ namespace SCP294.Types.Config
         {
           "Verstappen",
         },
-        AntiColaModel = false,
+        AntiColaModel = true,
         BackfireChance = 0.0f,
         DrinkMessage = "TU TU TURU",
         DrinkEffects = new List<DrinkEffect>()
@@ -664,7 +664,31 @@ namespace SCP294.Types.Config
         DrinkMessage = "<color=#7703FC> Hai ottenuto 2 oggetti troll nel tuo inventario!</color>",
         DrinkEffects = new List<DrinkEffect>(),
         DrinkCallback = new Action<Player>(DrinkCallbacks.Troll)
-      }
+      },
+      new CustomDrink()
+      {
+        DrinkNames = new List<string>()
+        {
+          "Warhead"
+        },
+        AntiColaModel = true,
+        BackfireChance = 0.0f,
+        DrinkMessage = "<color=#CF0000> Tempo di creare problemi!</color>",
+        DrinkEffects = new List<DrinkEffect>(),
+        DrinkCallback = new Action<Player>(DrinkCallbacks.Nuke)
+      },
+      //new CustomDrink()
+      //{
+       // DrinkNames = new List<string>()
+       // {
+        //  "Mistery Box"
+       // },
+       // AntiColaModel = true,
+       // BackfireChance = 0.0f,
+       // DrinkMessage = "Stai per ricevere un <color=#CF0000> arma</color> casuale!",
+       // DrinkEffects = new List<DrinkEffect>(),
+       // DrinkCallback = new Action<Player>(DrinkCallbacks.Box)
+      //}
     };
     }
 }
